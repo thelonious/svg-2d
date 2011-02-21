@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <title>PNG Generator Test</title>
+        <script src="Pnglet.js"></script>
+        <script>
+            function init() {
+                var width = 16;
+                var height = 16;
+
+                // create png
+                var png = new Pnglet(width,height, 256);
+
+                // create colors
+                var colors = [
+                    png.color(128,128,  0,127),
+                    png.color(  0,128,128,127),
+                    png.color(128,  0,128,127)
+                ];
+
+                // plot points
+                var index = 1;
+                for ( var y = 0; y < height; y++ ) {
+                    for ( var x = 0; x < width; x++ ) {
+                        png.point(colors[index], x, y);
+                        index = 3 - index;
+                    }
+                }
+
+                // output result
+                var string = png.output();
+                var fso = new ActiveXObject("Scripting.FileSystemObject");
+                var file = fso.CreateTextFile("Pnglet.bin", true);
+                for (var i = 0; i < string.length; i++ ) {
+                    var a = string.charCodeAt(i);
+                    var h = a.toString(16);
+                    var b;
+
+                    if ( 32 <= a && a < 127 )
+                        b = String.fromCharCode(a);
+                    else
+                        b = ".";
+
+                    file.WriteLine( a + "\t\t" + h + "\t\t" + b );
+                }
+                file.Close();
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <p>test2.png should have been created</p>
+    </body>
+</html>

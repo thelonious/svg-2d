@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Widgets</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Widgets</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-57539">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-50497">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Globa-45019">Global Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-TextboxKeypres-63036">TextboxKeypress </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Objec-22762">Object Variables</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Textbo-31875">VERSION</a></li>
+						<li type="i"><a href="#Anchor-Textbo-41168">textboxes</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Objec-63959">Object Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Textbo-9640">Find_Textbox</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Methods-23240">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructor-44867">constructor</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Attributes-44867">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-widt-64353">width</a></li>
+						<li type="i"><a href="#Anchor-heigh-4064">height</a></li>
+						<li type="i"><a href="#Anchor-paren-8821">parent</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">textbox</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Use-46919">Use</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Loading-14210">Loading Textbox into you SVG Document</a></li>
+					<li type="A"><a href="#Anchor-Creating-2821">Creating a Textbox</a></li>
+					<li type="A"><a href="#Anchor-Example-23522">Example</a></li>
+				</ol>
+				<li type="I"><a href="#Anchor-Know-18153">Known Problems</a></li>
+				<li type="I"><a href="#Anchor-Download-47383">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-57539"></a>Introduction</h2>
+			<p>Using the getComputedTextLength() method in an SVGTextContentElement, it is possible to determine the width of a string in pixels. Using that information, it is now possible to create textboxes in SVG.</p>
+			<p>This version of Textbox is quite simple. Support needs to be added to allow:</p>
+			<ol>
+				<li>The user to change the color scheme. This includes the textbox area and the text.</li>
+				<li>Multiple blank lines.</li>
+				<li>Wrapping text between spaces</li>
+				<li>While were at, how about scrolling too?</li>
+			</ol>
+			<hr />
+			<h2><a name="Anchor-Referenc-50497"></a>Reference</h2>
+			<h3><a name="Anchor-Globa-45019"></a>Global Methods</h3>
+			<p><a name="Anchor-TextboxKeypres-63036"></a>TextboxKeypress(<i>event</i>);</p>
+			<ul>
+				<p>TextboxKeypress() is an event handler that is called when a textbox has focus and a key is pressed.</p>
+				<p><b>event</b> is the event object passed generated my the keypress event.</p>
+			</ul>
+			<h3><a name="Anchor-Objec-22762"></a>Object Variables</h3>
+			<p><a name="Anchor-Textbo-31875"></a>Textbox.VERSION</p>
+			<blockquote>
+				<p>This is a number which represents the current version number for this implementation of the Testbox object. This can be used by scripts to check that the correct version of the object is being used.</p>
+			</blockquote>
+			<p><a name="Anchor-Textbo-41168"></a>Textbox.textboxes</p>
+			<ul>
+				<p>An array of Textbox objects used to find the currently active textbox object.</p>
+			</ul>
+			<h3><a name="Anchor-Objec-63959"></a>Object Methods</h3>
+			<p><a name="Anchor-Textbo-9640"></a>Textbox.Find_Textbox(<i>textbox</i>) - returns the currently active textbox object</p>
+			<ul>
+				<p>This object method is responsible for finding the currently active textbox in the textboxes object array.</p>
+				<p><b>textbox</b> is the parent &lt;g&gt; element of the textbox that generated the keypress event.</p>
+			</ul>
+			<h3><a name="Anchor-Methods-23240"></a>Methods</h3>
+			<p><a name="Anchor-constructor-44867"></a>constructor - new Textbox(<i>x_position, y_position, width, height, parent</i>);</p>
+			<blockquote>
+				<p><b>x_position</b> is the x position of the upper left-hand corner of the textbox.</p>
+				<p><b>y_position</b> is the y position of the upper left-hand corner of the textbox.</p>
+				<p><b>width</b> is the width of the textbox.</p>
+				<p><b>height</b> is the height of the textbox.</p>
+				<p><b>parent</b> is the element which will contain the textbox.</p>
+			</blockquote>
+			<p>add_char - add_char(<i>new_char</i>) - add a character to the end of the textbox</p>
+			<blockquote>
+				<p>add_char() is used to append a character to the end of the text in the textbox. This method will determine if the new character will cause the line to exceed the width of the textbox. If the text is too large, then a new &lt;tspan&gt; is created which effectively creates a new line in the text box.</p>
+				<p><b>new_char</b> is the character to add to the end of the textbox. Please note that even though you can pass more than one character to this method, new_char() will not properly handle more than one character at a time.</p>
+			</blockquote>
+			<p>delete_char - delete_char() - deletes the character at the end of the textbox</p>
+			<blockquote>
+				<p>delete_char() is used to remove the last character in the textbox. If removing the character results in an empty line, then the &lt;tspan&gt; that represented that line is removed from the textbox.</p>
+			</blockquote>
+			<p>add_tspan - add_tspan(<i>new_char, [offset]</i>);</p>
+			<blockquote>
+				<p>add_tspan is an internal method used to assist add_char when a new row needs to be added to the textbox. There should be no reason to call this method directly.</p>
+				<p><b>new_char</b> is the text used to initialize a new &lt;tspan&gt;.</p>
+				<p><b>offset</b> is an optional parameter. When present, this is the new relative y-offset to use when the new &lt;tspan&gt; element is created. If this parameter is not present, it defaults to 1em.</p>
+			</blockquote>
+			<h3><a name="Anchor-Attributes-44867"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-widt-64353"></a><b>width</b> is the width of the textbox.</p>
+				<p><a name="Anchor-heigh-4064"></a><b>height</b> is the height of the textbox.</p>
+				<p><a name="Anchor-paren-8821"></a><b>parent</b> is the element which will contain the textbox.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>textbox</b> is the &lt;text&gt; node of the textbox.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Use-46919"></a>Use</h2>
+			<h3><a name="Anchor-Loading-14210"></a>Loading Textbox into your SVG document</h3>
+			<p>In order to use the Textbox object in your SVG file, you will need to insert a &lt;script&gt; element inside of your &lt;svg&gt; element. Textbox uses <a href="../../../dom/nodebuilder/index.htm">Node_Builder</a>, so you will need to include this object in a script element also. As an example, if Textbox.js is in the same directory as your SVG document, then you would include the Textbox object with the following text:</p>
+			<ul>
+				<p>&lt;script xlink:href=&quot;Textbox.js&quot; /&gt;</p>
+			</ul>
+			<h3><a name="Anchor-Creating-2821"></a>Creating a Textbox</h3>
+			<p>In order to create a new Textbox object, you need to know the following: the upper-lefthand corner of the textbox, the width of the textbox, the height of the textbox, and the parent node of the textbox graphics. The following line creates a textbox at (10,10) with a width of 100 and and a height of 100. The textbox is appended to the <a href="../../../tutorials/basics/miscellaneous/root/index.htm">SVGRoot</a>.</p>
+			<pre>textbox = new Textbox(10, 10, 100, 100, SVGRoot);</pre>
+			<h3><a name="Anchor-Example-23522"></a>Example</h3>
+			<p>The following example shows two Textboxes. To activate a textbox, you must click it first and then begin typing. To see the complete details of this example, right-click (or control-click) the SVG file and View Source. (NOTE: if you are viewing this example with NN4, then please see the Known Problems section below.)</p>
+			<div align="center">
+				<embed src="textbox.svg" width="250" height="150" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Know-18153"></a>Known Problems</h2>
+			<p>Unfortunately, this class does not function properly in Netscape 4.7. To work around the problem, do the following:</p>
+			<ol>
+				<li>Create a &lt;g&gt; element in your SVG document</li>
+				<li>Add an onkeypress=&quot;TextboxKeypress(evt)&quot; attribute to the &lt;g&gt; element</li>
+				<li>Use the &lt;g&gt; element as the parent node when instantiated the textbox object</li>
+			</ol>
+			<p>I have not been able to determine the exact magical incantation that Netscape wants for the addEventListener method for keypresses. The steps above will force the keypress events to be sent to the class. Once that has been achieved, everything works fine from there.</p>
+			<hr />
+			<h2><a name="Anchor-Download-47383"></a>Download</h2>
+			<p><a href="Textbox.js">Textbox.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd" [
+    <!ATTLIST svg
+              xmlns:a3 CDATA #IMPLIED
+              a3:scriptImplementation CDATA #IMPLIED>
+    <!ATTLIST script
+              a3:scriptImplementation CDATA #IMPLIED>
+]>
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:a3="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     a3:scriptImplementation="Adobe">
+    <script type="text/ecmascript" a3:scriptImplementation="Adobe"
+            xlink:href="../../../common/Scheduler.js"/>
+    <script type="text/ecmascript" a3:scriptImplementation="Adobe"><![CDATA[
+        var rect;
+        var opacity = 1;
+        var delta   = 0.1;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            rect = svgDocument.getElementById("rect");
+            
+            scheduler.add_task(do_opacity, 2);
+        }
+        
+        function do_opacity() {
+            opacity += delta;
+            if (opacity > 1) {
+                opacity = 1;
+                delta *= -1;
+            } else if (opacity < 0) {
+                opacity = 0;
+                delta *= -1;
+            }
+            
+            rect.setAttributeNS(null, "opacity", opacity);
+        }
+    ]]></script>
+    <defs>
+        <path
+            id="button"
+            d="M-15 0 H15 A5 5 180 0 1 15 15 H-15 A5 5 180 0 1 -15 0"
+            stroke="gray" fill="#ddd"/>
+    </defs>
+    
+    <rect width="100%" height="100%" fill="white"/>
+    
+    <rect id="rect" x="15" y="10" width="90" height="66" style="fill: green" />
+    <g transform="translate(35, 90)" onclick="scheduler.stop()">
+        <use xlink:href="#button" />
+        <text y="11" text-anchor="middle" pointer-events="none">stop</text>
+    </g>
+    <g transform="translate(85, 90)" onclick="scheduler.start()">
+        <use xlink:href="#button" />
+        <text y="11" text-anchor="middle" pointer-events="none">start</text>
+    </g>
+</svg>
+

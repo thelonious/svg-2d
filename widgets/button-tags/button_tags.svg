@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<svg onload="loadGUI(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:gui="http://www.kevlindev.com/gui"
+     font-size="10pt">
+    <script type="text/ecmascript" xlink:href="ButtonTags.js"/>
+    <script type="text/ecmascript"><![CDATA[
+        var last_button;
+        var notes = new Array(
+            "Select Tool", "Pen Tool", "Rotate Tool", "Scale Tool", "Shear Tool",
+            "Text Tool", "Lathe Tool", "Extrude Parallel Tool", "Extrude Normal Tool",
+            "Unused");
+
+        function changeTool(button, index) {
+            var SVGDoc = window.svgDocument;
+            var note   = SVGDoc.getElementById("note").firstChild;
+            
+            note.data = notes[index];
+            if ( last_button ) last_button.toggle();
+            last_button = button;
+        }
+    ]]></script>
+
+    <rect width="100%" height="100%" fill="blue"/>
+
+    <!-- Create a Tool Palette of buttons -->
+    <!-- Each button click changes the text displayed in the main canvas -->
+    <gui:button mode="toggle" x="5"  y="7"  width="18" height="18" callback="changeTool(this, 0)"/>
+    <gui:button mode="toggle" x="25" y="7"  width="18" height="18" callback="changeTool(this, 1)"/>
+    <gui:button mode="toggle" x="5"  y="27" width="18" height="18" callback="changeTool(this, 2)"/>
+    <gui:button mode="toggle" x="25" y="27" width="18" height="18" callback="changeTool(this, 3)"/>
+    <gui:button mode="toggle" x="5"  y="47" width="18" height="18" callback="changeTool(this, 4)"/>
+    <gui:button mode="toggle" x="25" y="47" width="18" height="18" callback="changeTool(this, 5)"/>
+    <gui:button mode="toggle" x="5"  y="67" width="18" height="18" callback="changeTool(this, 6)"/>
+    <gui:button mode="toggle" x="25" y="67" width="18" height="18" callback="changeTool(this, 7)"/>
+    <gui:button mode="toggle" x="5"  y="87" width="18" height="18" callback="changeTool(this, 8)"/>
+    <gui:button mode="toggle" x="25" y="87" width="18" height="18" callback="changeTool(this, 9)"/>
+
+    <!-- Create a button that acts as a toggle -->
+    <gui:button mode="toggle" x="5" y="127" width="18" height="18"/>
+
+    <!-- Main canvase -->
+    <g id="canvas" transform="translate(48,5)">
+        <!-- Set the background color -->
+        <rect width="400" height="300" style="fill: lightgrey"/>
+
+        <gui:form action="http://www.kevlindev.com/show_post.php" method="post">
+        <!-- Create a series of checkboxes -->
+        <gui:checkbox x="5" y="5" label="Check Box 1"  name="checkbox1"/>
+        <gui:checkbox x="5" y="20" label="Check Box 2" name="checkbox2"/>
+        <gui:checkbox x="5" y="35" label="Check Box 3" name="checkbox3"/>
+
+        <!-- Create a group of radio buttons -->
+        <gui:radiobutton group="radioset1" x="5" y="122" label="Set 1, Button 1" value="button1"/>
+        <gui:radiobutton group="radioset1" x="5" y="136" label="Set 1, Button 2" value="button2"/>
+        <gui:radiobutton group="radioset1" x="5" y="150" label="Set 1, Button 3" value="buttonr3"/>
+
+        <!-- Create another group of radio buttons to show group independence -->
+        <gui:radiobutton group="radioset2" x="5" y="262" label="Set 2, Button 1" value="button1"/>
+        <gui:radiobutton group="radioset2" x="5" y="276" label="Set 2, Button 2" value="button2"/>
+        <gui:radiobutton group="radioset2" x="5" y="290" label="Set 2, Button 3" value="button3"/>
+
+        <!-- Create buttons with labels and different sizes -->
+        <gui:button x="275" y="10"  width="120" height="50" label="Long and Tall Button"/>
+        <gui:button x="300" y="270" width="40" height="18" label="Cancel"/>
+        <gui:button mode="submit" x="345" y="270" width="40" height="18" label="Save"/>
+        </gui:form>
+
+        <!-- Text panel showing name of current tool selected in tool palette -->
+        <text id="note" x="200" y="150" text-anchor="middle">No Tool Selected</text>
+    </g>
+</svg>

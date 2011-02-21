@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Widgets</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Widgets</p>
+		<div id="simple-content">
+			<p />
+			<div align="center">
+				<embed width="455" height="310" src="button_tags.svg" type="image/svg+xml" /></div>
+			<hr />
+			<p>This is a sample showing the types of buttons that can be created using custom Button Tags. This simplifies the creation of each Button widget by using the familiar XML element/attribute syntax that SVG'ers are already accustomed to. To see the details of this example, be sure to right-click (or option-click on the Macintosh) the SVG image above.</p>
+			<p>A summary of the Button elements and their associated attributes follows:</p>
+			<hr />
+			<p><b>The Button Namespace</b></p>
+			<ul>
+				You must defined a namespace equal to &quot;http://www.kevlindev.com/gui&quot;. The examples that follow below assume that the following namespace prefix has been defined:
+				<p>xmlns:gui=&quot;http://www.kevlindev.com/gui&quot;</p>
+			</ul>
+			<hr />
+			<p><b>button</b></p>
+			<ul>
+				<b>mode</b>: when set to &quot;toggle&quot;, the button will toggle on and off with each click of the mouse. For all other values, the button will toggle on and off with a single mouse click.
+				<p><b>x</b>: the x coordinate of the upper left corner of the button</p>
+				<p><b>y</b>: the y coordinate of the upper left corner of the button</p>
+				<p><b>width</b>: the width of the button</p>
+				<p><b>height</b>: the height of the button</p>
+				<p><b>label</b>: a string to be used as the text label of the button</p>
+				<p><b>callback</b>: a string of JavaScript to be execute each time the button is pressed</p>
+				<p>example:</p>
+				<pre>&lt;gui:button
+    mode=&quot;toggle&quot; x=&quot;10&quot; y=&quot;10&quot; width=&quot;100&quot; height=&quot;20&quot;
+    label=&quot;Test&quot; callback=&quot;alert('hello')/&gt;</pre>
+			</ul>
+			<p><b>checkbox</b></p>
+			<ul>
+				<p><b>x</b>: the x coordinate of the upper left corner of the checkbox</p>
+				<p><b>y</b>: the y coordinate of the upper left corner of the checkbox</p>
+				<p><b>label</b>: a string to be used as the text label of the checkbox</p>
+				<p><b>callback</b>: a string of JavaScript to be execute each time the checkbox is pressed</p>
+				<p>example:</p>
+				<pre>&lt;gui:checkbox x=&quot;10&quot; y=&quot;10&quot; label=&quot;Yes&quot;/&gt;</pre>
+			</ul>
+			<p><b>radiobutton</b></p>
+			<ul>
+				<p><b>group</b>: the group to which this radiobutton belongs. When a button in this group is selected, the last selected radiobutton will be deselected.</p>
+				<p><b>x</b>: the x coordinate of the upper left corner of the radiobutton</p>
+				<p><b>y</b>: the y coordinate of the upper left corner of the radiobutton</p>
+				<p><b>label</b>: a string to be used as the text label of the radiobutton</p>
+				<p><b>callback</b>: a string of JavaScript to be execute each time the radiobutton is pressed</p>
+				<p>example:</p>
+			</ul>
+			<ul>
+				<pre>&lt;gui:radiobutton group=&quot;names&quot; x=&quot;10&quot; y=&quot;10&quot; label=&quot;John&quot;/&gt;
+&lt;gui:radiobutton group=&quot;names&quot; x=&quot;10&quot; y=&quot;20&quot; label=&quot;Bill&quot;/&gt;
+&lt;gui:radiobutton group=&quot;names&quot; x=&quot;10&quot; y=&quot;30&quot; label=&quot;Bob&quot;/&gt;</pre>
+			</ul>
+			<hr />
+			<h3>Download</h3>
+			<p>In order to use these custom tags, you will need to load the following JavaScript file into your SVG file. Once the SVG file has loaded, you need to make a call to loadGUI() and then all instances of the custom tags will be replaced with their SVG equivalents.</p>
+			<p><a href="ButtonTags.js">ButtonTag.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

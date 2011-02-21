@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Widgets</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Widgets</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-65197">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-2014">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Objec-5499">Object Variables </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Widge-8243">VERSION</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Method-10927">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-15023">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-18658">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-23776">realize </a></li>
+						<li type="i"><a href="#Anchor-buildSV-27601">buildSVG</a></li>
+						<li type="i"><a href="#Anchor-addEventListener-31317">addEventListeners</a></li>
+						<li type="i"><a href="#Anchor-textToSV-35322">textToSVG </a></li>
+						<li type="i"><a href="#Anchor-getUserCoordinat-39819">getUserCoordinate </a></li>
+						<li type="i"><a href="#Anchor-getTransformToElemen-43544">getTransformToElement </a></li>
+						<li type="i"><a href="#Anchor-handleEven-46979">handleEvent </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-50694">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-61190">x </a></li>
+						<li type="i"><a href="#Anchor-1191">y</a></li>
+						<li type="i"><a href="#Anchor-node-6219">nodes</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-10485">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-65197"></a>Introduction</h2>
+			<p>Widget is an object from which other GUI objects on this site inherit. This object encapsulates a common set of functionality to be used by other GUI objects.</p>
+			<p>This is an abstract object that will not be used directly. This page exists to describe the functionality contained within this object.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-2014"></a>Reference</h2>
+			<h3><a name="Anchor-Objec-5499"></a>Object Variables</h3>
+			<p><a name="Anchor-Widge-8243"></a>Widget.VERSION</p>
+			<blockquote>
+				<p>This number represents the current version for this implementation of the Widget object. This property can be used by scripts to check that the correct version of the object is being used.</p>
+			</blockquote>
+			<h3><a name="Anchor-Method-10927"></a>Methods</h3>
+			<p><a name="Anchor-constructo-15023"></a>constructor - new Widget(<i>x, y</i>);</p>
+			<blockquote>
+				<p>This method creates a new Widget object.</p>
+			</blockquote>
+			<ul>
+				<p><b>x</b> is a number that defines the x position of the upper-lefthand corner of the widget</p>
+				<p><b>y</b> is a number that defines the y position of the upper-lefthand corner of the widget</p>
+			</ul>
+			<p><a name="Anchor-ini-18658"></a>init();</p>
+			<ul>
+				<p>init() initialized all properties for this object. Specifically, the x, y, and nodes properties are initialized.</p>
+			</ul>
+			<p><a name="Anchor-realiz-23776"></a>realize(<i>svgParentNode</i>);</p>
+			<ul>
+				<p>realize() constructs the SVG DOM nodes needed to visualize this widget. Any event listeners that are used by this object will be registered by this method.</p>
+				<p><b>svgParentNode</b> is an SVG DOM node. The document fragment built by the realize() method will be appended to this node. A reference to this node is stored in the parent property of the nodes property.</p>
+			</ul>
+			<p><a name="Anchor-buildSV-27601"></a>buildSVG();</p>
+			<ul>
+				<p>buildSVG() is an abstract method. Sub-classes need to override this method and are responsible for manufacturing and applying an SVG document fragment to the current SVG document.</p>
+			</ul>
+			<p><a name="Anchor-addEventListener-31317"></a>addEventListeners();</p>
+			<ul>
+				<p>addEventListeners() is an abstract method. Sub-classes need to override this method and are responsible for attaching all event listeners that are needed to implement the widget's functionality.</p>
+			</ul>
+			<p><a name="Anchor-textToSV-35322"></a>textToSVG(<i>text</i>); <i>// returns SVG Document Fragment</i></p>
+			<ul>
+				<p>textToSVG() converts pSVG to an SVG document fragment.</p>
+				<p><b>text</b> is a string of pSVG that is to be converted to an SVG document fragment.</p>
+			</ul>
+			<p><a name="Anchor-getUserCoordinat-39819"></a>getUserCoordinate(<i>node, x, y</i>); <i>// returns an SVGPoint</i></p>
+			<ul>
+				<p>getUserCoordinate() converts an x,y value to the local coordinate system used by an SVG DOM node.</p>
+				<p><b>node</b> is an SVG DOM node that will be used to establish the target coordinate system.</p>
+				<p><b>x</b> is a number that represents the x-coordinate in screen coordinates.</p>
+				<p><b>y</b> is a number that represents the y-coordinate in screen coordinates.</p>
+			</ul>
+			<p><a name="Anchor-getTransformToElemen-43544"></a>getTransformToElement(<i>node</i>); <i>// returns an SVGMatrix</i></p>
+			<ul>
+				<p>getTransformToElement() calculates the cummulative transformation that is being applied to an SVG DOM node.</p>
+				<p><b>node</b> is an SVG DOM node. All transformations that are being applied to this node will be calculated</p>
+			</ul>
+			<p><a name="Anchor-handleEven-46979"></a>handleEvent(<i>e</i>);</p>
+			<ul>
+				<p>handleEvent() is an event dispatcher. This method tests whether the current object has a method name that matches the e.type property. If this method exists, then it is called with the e parameter passed to it.</p>
+				<p>This method allows a Widget to act as event handlers for events registered with the addEventListener() method.</p>
+				<p><b>e</b> is an event object passed to this event handler.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-50694"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-61190"></a><b>x</b> is the x coordinate of the upper-lefthand corner of the widget.</p>
+				<p><a name="Anchor-1191"></a><b>y</b> is the y coordinate of the upper-lefthand corner of the widget.</p>
+				<p><a name="Anchor-node-6219"></a><b>nodes</b> is an object whose properties are used to reference key SVG DOM nodes. Wdget defines the following node:</p>
+			</ul>
+			<p><b>nodes.parent</b> is the SVG parent node of the widget.</p>
+			<hr />
+			<h2><a name="Anchor-Downloa-10485"></a>Download</h2>
+			<p><a href="Widget.js">Widget.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

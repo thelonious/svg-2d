@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Shapes</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Shapes</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-11804">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-13977">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-16180">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-18774">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-22619">init</a><a href="../polygon/index.htm#Anchor-realiz-53691"> </a></li>
+						<li type="i"><a href="#Anchor-sho-32884">show</a></li>
+						<li type="i"><a href="#Anchor-refres-59162">refresh </a></li>
+						<li type="i"><a href="#Anchor-updat-36479">update</a></li>
+						<li type="i"><a href="#Anchor-translat-63168">translate </a></li>
+						<li type="i"><a href="#Anchor-selec-45332">select</a></li>
+						<li type="i"><a href="#Anchor-registerHandle-1107">registerHandles </a></li>
+						<li type="i"><a href="#Anchor-unregisterHandle-5373">unregisterHandles </a></li>
+						<li type="i"><a href="#Anchor-selectHandle-9198">selectHandles </a></li>
+						<li type="i"><a href="#Anchor-showHandle-12423">showHandles </a></li>
+						<li type="i">mousedown</li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-48917">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-svgNod-24475">svgNode </a></li>
+						<li type="i"><a href="#Anchor-locke-28551">locked </a></li>
+						<li type="i"><a href="#Anchor-visibl-52312">visible</a></li>
+						<li type="i"><a href="#Anchor-selecte-59472">selected</a></li>
+						<li type="i"><a href="#Anchor-callbac-63598">callback</a></li>
+						<li type="i"><a href="#Anchor-lastUpdat-32967">lastUpdate </a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-1627">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-11804"></a>Introduction</h2>
+			<p>Shape is an abstract JavaScript object from which other shape-manipulating objects are sub-classed. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<p>Shape inherits from the EventHandler object.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-13977"></a>Reference</h2>
+			<h3><a name="Anchor-Method-16180"></a>Methods</h3>
+			<p><a name="Anchor-constructo-18774"></a>constructor - new Shape(<i>svgNode</i>);</p>
+			<ul>
+				<p>This method creates a new Shape object. All initialization is handled by the init() method.</p>
+			</ul>
+			<p><a name="Anchor-ini-22619"></a>init(<i>svgNode</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>svgNode</b> is a reference to the SVG node that is being managed by this object.</p>
+			</ul>
+			<p><a name="Anchor-sho-32884"></a>show(<i>state</i>);</p>
+			<ul>
+				<p>show() controls the visibility of the SVG node that is being managed by this object.</p>
+			</ul>
+			<p><a name="Anchor-refres-59162"></a>refresh();</p>
+			<ul>
+				<p>refresh() applies the handle positions to the SVG element associated with this object.</p>
+			</ul>
+			<p><a name="Anchor-updat-36479"></a>update();</p>
+			<ul>
+				<p>update() calls the callback, if defined, associated with this object.</p>
+			</ul>
+			<p><a name="Anchor-translat-63168"></a>translate(<i>delta</i>);</p>
+			<ul>
+				<p>translate() translates the SVG element and the associated handles by the specified amount.</p>
+				<p><b>delta</b> is a Point2D.</p>
+			</ul>
+			<p><a name="Anchor-selec-45332"></a>select(<i>state</i>);</p>
+			<ul>
+				<p>select() sets the selected flag of this object.</p>
+			</ul>
+			<p><a name="Anchor-registerHandle-1107"></a>registerHandles();</p>
+			<ul>
+				<p>registerHandles() adds all handles used by this object to the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-unregisterHandle-5373"></a>unregisterHandles();</p>
+			<ul>
+				<p>unregisterHandles() removes all handles used by this object from the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-selectHandle-9198"></a>selectHandles();</p>
+			<ul>
+				<p>selectHandles() set the current select value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-showHandle-12423"></a>showHandles();</p>
+			<ul>
+				<p>showHandles() sets the current visibility value for all handles used by this object.</p>
+			</ul>
+			<p>mousedown(<i>e</i>);</p>
+			<ul>
+				<p>mousedown() handles a mousedown event that is fired on the SVG node managed by this object. This method manipulates the currently selected shapes and handles.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-48917"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-svgNod-24475"></a><b>svgNode </b>is the SVG DOM node that is being managed by this object.</p>
+				<p><a name="Anchor-locke-28551"></a><b>locked</b> is a Boolean that determines if this object can be selected or not</p>
+				<p><a name="Anchor-visibl-52312"></a><b>visible</b> is a Boolean that determines if the SVG graphic is visible or not.</p>
+				<p><a name="Anchor-selecte-59472"></a><b>selected</b> is a Boolean that determines if this object is selected or not.</p>
+				<p><a name="Anchor-callbac-63598"></a><b>callback</b> is a function reference that will be invoked each time this object is updated.</p>
+				<p><a name="Anchor-lastUpdat-32967"></a><b>lastUpdate</b> is used by the mouser when determining which shapes have been effected by a drag.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Downloa-1627"></a>Download</h2>
+			<p><a href="Shape.js">Shape.js</a> - the shape object only...cannot be used in isolation</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

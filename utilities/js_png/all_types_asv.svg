@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="js_png.js.gz"/>
+    <script type="text/ecmascript"><![CDATA[
+        var xlinkns;
+        var world;
+        var width, height;
+        
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            svgns = "http://www.w3.org/2000/svg";
+            xlinkns = "http://www.w3.org/1999/xlink";
+            world = svgDocument.getElementById("world");
+            width = 32;
+            height = 32;
+
+            makeIndexedTransparent();
+            makeIndexedOpaque();
+
+            makeGreyscaleTransparent();
+            makeGreyscaleOpaque();
+            makeGreyscaleAlpha();
+
+            makeTrueColorTransparent();
+            makeTrueColorOpaque();
+            makeTrueColorAlpha();
+        }
+
+        function makeIndexedTransparent() {
+            var png = makeIndexed(true);
+
+            addImage(png, 10, 10);
+        }
+
+        function makeIndexedOpaque() {
+            var png = makeIndexed();
+
+            addImage(png, 50, 10);
+        }
+
+        function makeGreyscaleTransparent() {
+            var png = makeGreyscale();
+
+            png.setTransparencyValue(128);
+            addImage(png, 10, 50);
+        }
+
+        function makeGreyscaleOpaque() {
+            var png = makeGreyscale();
+
+            addImage(png, 50, 50);
+        }
+
+        function makeTrueColorTransparent() {
+            var png = makeTrueColor();
+
+            png.setTransparencyColor(128, 128, 0);
+            addImage(png, 10, 90);
+        }
+
+        function makeTrueColorOpaque() {
+            var png = makeTrueColor();
+
+            addImage(png, 50, 90);
+        }
+
+        function makeIndexed(transparent) {
+            // create png
+            var png = new PngIndex(width, height, transparent);
+
+            // build color palette
+            // NOTE: palette indices range from 0 to 255, inclusive
+            // NOTE: alpha of 255 = opaque, 0 = transparent
+            // NOTE: index 0 is the background color
+            // setColor: palette index, red, green, blue, alpha
+            png.setColor(0, 128, 128,   0,   0);
+            png.setColor(1, 128,   0, 128, 127);
+            png.setColor(2, 128,   0, 128, 255);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    // setPixel: x, y, palette index
+                    png.setPixel(x, y, (x+y) % 3);
+                }
+            }
+
+            return png;
+        }
+
+        function makeGreyscale() {
+            // create png
+            var png = new PngGreyscale(width, height);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    // setPixel: x, y, greyscale value
+                    png.setPixel(
+                        x, y,
+                        112 + Math.round(Math.random() * 32)
+                    );
+                }
+            }
+
+            return png;
+        }
+
+        function makeGreyscaleAlpha() {
+            // create png
+            var png = new PngGreyscale(width, height, true);
+
+            // plot points
+            var xMid = width / 2;
+            var yMid = height / 2;
+            var maxLength = Math.sqrt(xMid*xMid + yMid*yMid);
+
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    var dx = x - xMid;
+                    var dy = y - yMid;
+                    var length = Math.sqrt(dx*dx + dy*dy);
+                    var alpha = 255 - Math.round((length / maxLength)*255);
+                    // setPixel: x, y, greyscale value
+                    png.setPixel(
+                        x, y,
+                        112 + Math.round(Math.random() * 32),
+                        alpha
+                    );
+                }
+            }
+
+            addImage(png, 90, 50);
+        }
+
+        function makeTrueColor() {
+            // create png
+            var png = new PngTrueColor(width, height);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    if ( x == y ) {
+                        png.setPixel(x, y, 128, 128, 0);
+                    } else {
+                        png.setPixel(
+                            x, y,
+                            96 + Math.round(Math.random() * 64),
+                            96 + Math.round(Math.random() * 64),
+                            96 + Math.round(Math.random() * 64)
+                        );
+                    }
+                }
+            }
+
+            return png;
+        }
+
+        function makeTrueColorAlpha() {
+            // create png
+            var png = new PngTrueColor(width, height, true);
+
+            // plot points
+            var xMid = width / 2;
+            var yMid = height / 2;
+            var maxLength = Math.sqrt(xMid*xMid + yMid*yMid);
+
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    var dx = x - xMid;
+                    var dy = y - yMid;
+                    var length = Math.sqrt(dx*dx + dy*dy);
+                    var alpha = 255 - Math.round((length / maxLength)*255);
+                    // setPixel: x, y, greyscale value
+                    png.setPixel(
+                        x, y,
+                        96 + Math.round(Math.random() * 64),
+                        96 + Math.round(Math.random() * 64),
+                        96 + Math.round(Math.random() * 64),
+                        alpha
+                    );
+                }
+            }
+
+            addImage(png, 90, 90);
+        }
+
+        function addImage(png, x, y) {
+            var image = svgDocument.createElementNS(svgns, "image");
+            image.setAttributeNS(null, "x", x);
+            image.setAttributeNS(null, "y", y);
+            image.setAttributeNS(null, "width", png.getWidth());
+            image.setAttributeNS(null, "height", png.getHeight());
+            image.setAttributeNS(null, "image-rendering", "optimizeSpeed");
+            image.setAttributeNS(
+                xlinkns,
+                "xlink:href",
+                "data:image/png;base64,\n" + png.getBase64()
+            );
+
+            world.appendChild(image);
+        }
+    ]]></script>
+    <g id="world" transform="scale(4)">
+        <rect x="5" y="22.5" width="82" height="6" fill="blue"/>
+        <rect x="5" y="62.5" width="122" height="6" fill="blue"/>
+        <rect x="5" y="102.5" width="122" height="6" fill="blue"/>
+    </g>
+    <g font-size="12pt" text-anchor="middle">
+        <text x="104" y="1.5em">Transparency</text>
+        <text x="264" y="1.5em">Opaque</text>
+        <text x="424" y="1.5em">Alpha</text>
+    </g>
+    <g font-size="12pt">
+        <text x="528" y="104">Indexed</text>
+        <text x="528" y="264">Greyscale</text>
+        <text x="528" y="424">True Color</text>
+    </g>
+</svg>

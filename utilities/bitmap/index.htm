@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-57539">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-50497">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Methods-23240">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructor-44867">constructor</a></li>
+						<li type="i"><a href="#Anchor-mak-17251">make_bitmap</a></li>
+						<li type="i"><a href="#Anchor-mak-22098">make_rows</a></li>
+						<li type="i"><a href="#Anchor-se-27085">set_pixel</a></li>
+						<li type="i"><a href="#Anchor-ge-32062">get_pixel</a></li>
+						<li type="i"><a href="#Anchor-updat-39233">update</a></li>
+						<li type="i"><a href="#Anchor-se-44410">set_pixel_visibility</a></li>
+						<li type="i"><a href="#Anchor-se-52141">set_pixel_color</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Attributes-44867">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-widt-64353">width</a></li>
+						<li type="i"><a href="#Anchor-heigh-4064">height</a></li>
+						<li type="i"><a href="#Anchor-paren-8821">cell_width</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">cell_height</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">cell_gap</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">cell_full_width</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">cell_full_height</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">grid_width</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">grid_height</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">pixels</a></li>
+						<li type="i"><a href="#Anchor-textbo-14650">rows</a></li>
+						<li type="i"><a href="index.htm#Anchor-aut-33516">auto_update</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Use-46919">Use</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Loading-14210">Loading Bitmap into you SVG Document</a></li>
+					<li type="A"><a href="#Anchor-Creating-2821">Creating a Bitmap</a></li>
+					<li type="A"><a href="#Anchor-Example-23522">Example</a></li>
+				</ol>
+				<li type="I"><a href="#Anchor-Download-47383">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-57539"></a>Introduction</h2>
+			<p>Bitmap allows you to simulate a bitmap (single-colored image) in SVG. This can be used to show an enlarged bitmap while maintaining a low memory profile and a relatively quick startup time. Potential effects with Bitmap include building up an image one line at a time or having an image appear with the convergence of seemingly random lines.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-50497"></a>Reference</h2>
+			<h3><a name="Anchor-Methods-23240"></a>Methods</h3>
+			<p><a name="Anchor-constructor-44867"></a>constructor - new Bitmap(<i>parent, width, height, cw, ch, cg</i>);</p>
+			<blockquote>
+				<p><b>parent</b> is the parent node to which the bitmap will be appended.</p>
+				<p><b>width</b> is the number of columns in the bitmap.</p>
+				<p><b>height</b> is the number of rows in the bitmap.</p>
+				<p><b>cw</b> is the width of a pixel in user-coordinates.</p>
+				<p><b>ch</b> is the height of a pixel in user-coordinates.</p>
+				<p><b>cg</b> is the space between pixels in user coordinates.</p>
+			</blockquote>
+			<p><a name="Anchor-mak-17251"></a>make_bitmap - make_bitmap(<i>parent</i>) - create the SVG tree that represents the bitmap</p>
+			<blockquote>
+				<p>make_bitmap() creates the nodes and DOM structure needed to represent the bitmap. The resulting tree is appended to the specified parent. This is used internally to the Bitmap class. There should be no need to call this method.</p>
+				<p><b>parent</b> is the parent node to which the bitmap DOM tree will be appended.</p>
+			</blockquote>
+			<p><a name="Anchor-mak-22098"></a>make_rows - make_rows(parent) - create the SVG elements for each row</p>
+			<blockquote>
+				<p>make_rows() creates the individual &lt;line&gt; elements, one for each row in the Bitmap. Each row's DOM tree is appended to the specified parent. There should be no need to call this method.</p>
+				<p><b>parent</b> is the parent node to which the bitmap DOM tree will be appended</p>
+			</blockquote>
+			<p><a name="Anchor-se-27085"></a>set_pixel - set_pixel(<i>x, y, value</i>) - set the value of a pixel</p>
+			<blockquote>
+				<p>set_pixel() sets the pixel value at the specified x and y coordinates. The x and y coordinates are checked to make sure they are in a valid range.</p>
+				<p><b>x</b> is the horizontal integer coordinate of the pixel to set.</p>
+				<p><b>y</b> is the vertical integer coordinate of the pixel to set.</p>
+				<p><b>value</b> is the value to which the pixel is set. Zero turns off the pixel. Any other number, turns on the pixel</p>
+			</blockquote>
+			<p><a name="Anchor-ge-32062"></a>get_pixel - get_pixel(<i>x, y</i>) - get the value of a pixel</p>
+			<blockquote>
+				<p>get_pixel() returns the pixel value at the specified x and y coordinates. The x and y coordinates are checked to make sure they are in a valid range.</p>
+				<p><b>x</b> is the horizontal integer coordinate of the pixel to get.</p>
+				<p><b>y</b> is the vertical integer coordinate of the pixel to get.</p>
+			</blockquote>
+			<p><a name="Anchor-updat-39233"></a>update - update() - redraw all lines in the Bitmap</p>
+			<blockquote>
+				<p>update() forces all rows in the Bitmap to redraw. This can be used to post-pone an update to the Bitmap until all changes are finalized. This can have the benefit of reduces redraw times if used carefully.</p>
+			</blockquote>
+			<p><a name="Anchor-se-44410"></a>set_pixel_visibility - set_pixel(<i>setting</i>) - set the current visibility of all pixels</p>
+			<blockquote>
+				<p>set_pixel_visibility() sets the current visibility of all pixels. Valid values are &quot;inline&quot; and &quot;none&quot;. Use this to show and hide the pixels of a Bitmap.</p>
+			</blockquote>
+			<p><a name="Anchor-se-52141"></a>set_pixel_color - set_pixel(<i>color</i>) - set the color of all pixels</p>
+			<blockquote>
+				<p>set_pixel_color() sets the color of all pixels.</p>
+			</blockquote>
+			<h3><a name="Anchor-Attributes-44867"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-widt-64353"></a><b>width</b> is the width of the Bitmap.</p>
+				<p><a name="Anchor-heigh-4064"></a><b>height</b> is the height of the Bitmap.</p>
+				<p><a name="Anchor-paren-8821"></a><b>cell_width</b> is the number of columns in the Bitmap.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>cell_height</b> is the number of rows in the Bitmap.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>cell_gap</b> is the distance between pixels.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>cell_full_width</b> is a convenience property that is the width of a pixel plus the space following it.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>cell_full_height</b> is a convenience property that is the height of a pixel plus the space following it.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>grid_width</b> is convenience property that is the total width of the bitmap. This value takes into account the width of a pixel and the space between pixels. This is the true width of the Bitmap in user-coordinates.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>grid_height</b> is convenience property that is the total height of the bitmap. This value takes into account the height of a pixel and the space between pixels. This is the true height of the Bitmap in user-coordinates.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>pixels</b> is the &lt;g&gt; element that is created to contain all of the rows of the Bitmap.</p>
+				<p><a name="Anchor-textbo-14650"></a><b>rows</b> is an array of the rows of the Bitmap.</p>
+				<p><a name="Anchor-aut-33516" /><b>auto_update</b> is a boolean. When this value is true, the row referenced in set_pixel will be automatically updated once the new pixel value has been set. This can be useful when you are changing only a pixel or two at a time as &quot;update&quot; refreshes all rows in the Bitmap. However, if you are making a large number of updates that effect most rows in the Bitmap, then it is better to leave this value at is default of &quot;false&quot; and then call &quot;update&quot; once you have completed your operations on the Bitmap.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Use-46919"></a>Use</h2>
+			<h3><a name="Anchor-Loading-14210"></a>Loading Bitmap into your SVG document</h3>
+			<p>In order to use the Bitmap object in your SVG file, you will need to insert a &lt;script&gt; element inside of your &lt;svg&gt; element. As an example, if Bitmap.js is in the same directory as your SVG document, then you would include the Bitmap object with the following text:</p>
+			<ul>
+				<p>&lt;script xlink:href=&quot;Bitmap.js&quot; /&gt;</p>
+			</ul>
+			<h3><a name="Anchor-Creating-2821"></a>Creating a Bitmap</h3>
+			<p>In order to create a new Bitmap object, you need to know the following: the node to which to append the Bitmap, the number of columns and rows in the Bitmap, the pixel width and height, and the space between pixels. The following line creates a Bitmap that has 100 columns and 200 rows with pixels are 2 units wide and 4 units tall with 2 units between them. The textbox is appended to the grid.</p>
+			<pre>bitmap = new Bitmap(grid, 100, 200, 2, 4, 2);</pre>
+			<h3><a name="Anchor-Example-23522"></a>Example</h3>
+			<p>Please take a look at <a href="../../../alife/ants/index.htm">Langton's Ants</a> to see an example of Bitmap in action.</p>
+			<hr />
+			<h2><a name="Anchor-Download-47383"></a>Download</h2>
+			<p><a href="Bitmap_1_1.js">Bitmap_1_1.js</a></p>
+			<p />
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

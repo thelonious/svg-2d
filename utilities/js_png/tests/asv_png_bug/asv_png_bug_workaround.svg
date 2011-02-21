@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     image-rendering="optimizeSpeed">
+    <g id="world" transform="scale(4)">
+        <rect x="5" y="22.5" width="82" height="6" fill="blue"/>
+        <rect x="5" y="62.5" width="82" height="6" fill="blue"/>
+
+        <image x="10" y="50" width="32" height="32" xlink:href="GreyscaleTransparent2.png"/>
+        <image x="50" y="50" width="32" height="32" xlink:href="GreyscaleOpaque.png"/>
+        <image x="10" y="10" width="32" height="32" xlink:href="IndexedTransparent.png"/>
+        <image x="50" y="10" width="32" height="32" xlink:href="IndexedOpaque.png"/>
+    </g>
+</svg>

@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="no"?>
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script xlink:href="../../2D.js"/>
+    <script><![CDATA[
+        var svgns  = "http://www.w3.org/2000/svg";
+        var azap, mouser;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            azap   = new AntiZoomAndPan();
+            mouser = new Mouser();
+
+            var nodes = svgDocument.getElementsByTagNameNS(svgns, "circle");
+            var background = svgDocument.getElementById("background");
+
+            for ( var i = 0; i < nodes.length; i++ ) {
+                var circle = new Circle( nodes.item(i) );
+
+                circle.realize();
+            }
+
+            azap.appendNode(mouser.svgNode);
+            azap.appendNode(background);
+        }
+    ]]></script>
+    <defs>
+		<linearGradient id="gradient45" x1="0%" y1="0%" x2="100%" y2="100%"
+			spreadMethod="pad" gradientUnits="objectBoundingBox">
+			<stop offset="0%" stop-color="rgb(235,235,235)"/>
+			<stop offset="100%" stop-color="rgb(0,0,0)"/>
+		</linearGradient>
+		<linearGradient id="gradient225" x1="100%" y1="100%" x2="0%" y2="0%"
+			spreadMethod="pad" gradientUnits="objectBoundingBox">
+			<stop offset="0%" stop-color="rgb(235,235,235)"/>
+			<stop offset="100%" stop-color="rgb(0,0,0)"/>
+		</linearGradient>
+    </defs>
+    <rect id="background" width="100%" height="100%" opacity="0"
+          onmousedown="mouser.unregisterShapes()"/>
+    <circle cx="55" cy="60" r="50"
+            stroke="yellow" stroke-width="10" stroke-dasharray="5,5"
+            fill="purple"/>
+    <circle cx="205" cy="60" r="50"
+            stroke="blue" stroke-width="5" fill="none"/>
+    <circle cx="355" cy="60" r="50"
+            stroke="url(#gradient45)" stroke-width="5"
+            fill="url(#gradient225)"/>
+</svg>

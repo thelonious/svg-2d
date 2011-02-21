@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Math Object</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">Tutorials</a> :: Geometry</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-48644">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-51268">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-53932">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-56265">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-58999">init</a></li>
+						<li type="i"><a href="#Anchor-ad-40349">add</a></li>
+						<li type="i"><a href="#Anchor-addEqual-44075">addEquals</a></li>
+						<li type="i"><a href="#Anchor-scalarAd-47950">scalarAdd</a></li>
+						<li type="i"><a href="#Anchor-scalarAddEqual-51415">scalarAddEquals</a></li>
+						<li type="i"><a href="#Anchor-subtrac-55211">subtract</a></li>
+						<li type="i"><a href="#Anchor-subtractEqual-59667">subtractEquals</a></li>
+						<li type="i"><a href="#Anchor-scalarSubtrac-63483">scalarSubtract</a></li>
+						<li type="i"><a href="#Anchor-scalarSubtractEqual-1482">scalarSubtractEquals</a></li>
+						<li type="i"><a href="#Anchor-multipl-5778">multiply</a></li>
+						<li type="i"><a href="#Anchor-multiplyEqual-10244">multiplyEquals</a></li>
+						<li type="i"><a href="#Anchor-divid-13980">divide</a></li>
+						<li type="i"><a href="#Anchor-divideEqual-18036">divideEquals</a></li>
+						<li type="i"><a href="#Anchor-21147">eq </a></li>
+						<li type="i"><a href="#Anchor-25594">lt </a></li>
+						<li type="i"><a href="#Anchor-lt-29970">lte </a></li>
+						<li type="i"><a href="#Anchor-34907">gt </a></li>
+						<li type="i"><a href="#Anchor-gt-39163">gte </a></li>
+						<li type="i"><a href="#Anchor-ler-63245">lerp</a></li>
+						<li type="i"><a href="#Anchor-distanceFro-40436">distanceFrom</a></li>
+						<li type="i"><a href="#Anchor-mi-35244">min </a></li>
+						<li type="i"><a href="#Anchor-ma-39570">max </a></li>
+						<li type="i"><a href="#Anchor-toStrin-633">toString</a></li>
+						<li type="i"><a href="#Anchor-setX-45063">setXY</a></li>
+						<li type="i"><a href="#Anchor-setFromPoin-49249">setFromPoint</a></li>
+						<li type="i"><a href="#Anchor-swa-23575">swap </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-6702">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-12130">x</a></li>
+						<li type="i"><a href="#Anchor-23296">y</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-26931">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-48644"></a>Introduction</h2>
+			<p>Point2D is a JavaScript object used to encapsulate a 2-dimensional coordinate. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-51268"></a>Reference</h2>
+			<h3><a name="Anchor-Method-53932"></a>Methods</h3>
+			<p><a name="Anchor-constructo-56265"></a>constructor - new Point2D(<i>x, y</i>);</p>
+			<ul>
+				<p>This method creates a new Point2D object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-58999"></a>init(<i>x, y</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>x</b> is a number that represents the x-coordinate of a point.</p>
+				<p><b>y</b> is a number that represents the y-coordinate of a point.</p>
+			</ul>
+			<p><a name="Anchor-ad-40349"></a>add(<i>that</i>) : Point2D;</p>
+			<ul>
+				<p>add() returns a new Point2D that is the addition of this object and another Point2D.</p>
+			</ul>
+			<p><a name="Anchor-addEqual-44075"></a>addEquals(<i>that</i>): Point2D;</p>
+			<ul>
+				<p>addEquals() adds another Point2D to this object. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-scalarAd-47950"></a>scalarAdd(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>scalarAdd() returns a new Point2D that is equal to the addition of the specified scalar to both coordinates in the object.</p>
+			</ul>
+			<p><a name="Anchor-scalarAddEqual-51415"></a>scalarAddEquals(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>scalarAddEquals() adds the specified scalar to both coordinates of the object. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-subtrac-55211"></a>subtract(<i>that</i>): Point2D;</p>
+			<ul>
+				<p>subtract() returns a new Point2D that is the subtraction another Point2D from this object.</p>
+			</ul>
+			<p><a name="Anchor-subtractEqual-59667"></a>subtractEquals(<i>that</i>): Point2D;</p>
+			<ul>
+				<p>subtractEquals() subtracts another Point2D from this object. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-scalarSubtrac-63483"></a>scalarSubtract(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>scalarSubtract() returns a new Point2D that is equal to the subtraction of the specified scalar from both coordinates in the object.</p>
+			</ul>
+			<p><a name="Anchor-scalarSubtractEqual-1482"></a>scalarSubtractEquals(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>scalarSubtractEquals() subtracts the specified scalar from both coordinates of the object. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-multipl-5778"></a>multiply(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>multiply() returns a new Point2D that equals this object whose coordinates have been multiplied by the specified scalar amount.</p>
+			</ul>
+			<p><a name="Anchor-multiplyEqual-10244"></a>multiplyEquals(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>multiplyEquals() multiplies this object's coordinates by the specified amount. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-divid-13980"></a>divide(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>divide() returns a new Point2D that equals this object whose coordinates have been divided by the specified scalar amount.</p>
+			</ul>
+			<p><a name="Anchor-divideEqual-18036"></a>divideEquals(<i>scalar</i>): Point2D;</p>
+			<ul>
+				<p>divideEquals() divides this object's coordinates by the specified amount. The object is returned to allow multiple point operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-21147"></a>eq(<i>that</i>): boolean;</p>
+			<ul>
+				<p>eq() determines if this object's coordinates match the specified Point2D coordinates.</p>
+			</ul>
+			<p><a name="Anchor-25594"></a>lt(<i>that</i>): boolean;</p>
+			<ul>
+				<p>lt() determines if any of this object's coordinates are less than the specified Point2D coordinates.</p>
+			</ul>
+			<p><a name="Anchor-lt-29970"></a>lte(<i>that</i>): boolean;</p>
+			<ul>
+				<p>lte() determines if any of this object's coordinates are less than the specified Point2D coordinates or if all coordinates match.</p>
+			</ul>
+			<p><a name="Anchor-34907"></a>gt(<i>that</i>): boolean;</p>
+			<ul>
+				<p>gt() determines if any of this object's coordinates are greater than the specified Point2D coordinates.</p>
+			</ul>
+			<p><a name="Anchor-gt-39163"></a>gte(<i>that</i>): boolean;</p>
+			<ul>
+				<p>gte() determines if any of this object's coordinates are greater than the specified Point2D coordinates or if all coordinates match.</p>
+			</ul>
+			<p><a name="Anchor-ler-63245"></a>lerp(<i>that, percent</i>) : Point2D;</p>
+			<ul>
+				<p>lerp() performs a linear interpolation between the current Point2D and another Point2D based on the percentage passed to this method.</p>
+			</ul>
+			<p><a name="Anchor-distanceFro-40436"></a>distanceFrom(<i>that</i>) : float;</p>
+			<ul>
+				<p>distanceFrom() returns the shortest distance between this object and another Point2D.</p>
+			</ul>
+			<p><a name="Anchor-mi-35244"></a>min(<i>that</i>) : Point2D;</p>
+			<ul>
+				<p>min() returns a new Point2D whose coordinates are the minimum of each coordinate in this object and the specified Point2D.</p>
+			</ul>
+			<p><a name="Anchor-ma-39570"></a>max(<i>that</i>) : Point2D;</p>
+			<ul>
+				<p>max() returns a new Point2D whose coordinates are the maximum of each coordinate in this object and the specified Point2D.</p>
+			</ul>
+			<p><a name="Anchor-toStrin-633"></a>toString() : string;</p>
+			<ul>
+				<p>toString() converts this object to a string representation.</p>
+			</ul>
+			<p><a name="Anchor-setX-45063"></a>setXY(<i>x, y</i>);</p>
+			<ul>
+				<p>setXY() sets the current object's coordinates to the specified values.</p>
+			</ul>
+			<p><a name="Anchor-setFromPoin-49249"></a>setFromPoint(<i>point</i>);</p>
+			<ul>
+				<p>setFromPoint() copies the specified point's coordinates to this object.</p>
+			</ul>
+			<p><a name="Anchor-swa-23575"></a>swap(<i>that</i>);</p>
+			<ul>
+				<p>swap() exchanges the coordinates of this object and the specified Point2D.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-6702"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-12130"></a><b>x</b> is a number that represents the x-coordinate of a point.</p>
+				<p><a name="Anchor-23296"></a><b>y</b> is a number that represents the y-coordinate of a point.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Downloa-26931"></a>Download</h2>
+			<p><a href="Point2D.js">Point2D.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

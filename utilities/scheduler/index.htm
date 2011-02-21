@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introduction-14210">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Reference-49425">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Globals-11481">Globals</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-scheduler-35882">scheduler</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Contants-47857">Contants</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Scheduler.INTERVAL-14210">Scheduler.INTERVAL</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Methods-23240">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructor-3800">constructor</a></li>
+						<li type="i"><a href="#Anchor-process-23240">process</a></li>
+						<li type="i"><a href="#Anchor-add-3800">add_task</a></li>
+						<li type="i"><a href="#Anchor-delete-35326">delete_task</a></li>
+						<li type="i"><a href="#Anchor-start-44867">start</a></li>
+						<li type="i"><a href="#Anchor-stop-33869">stop</a></li>
+						<li type="i"><a href="#Anchor-pause-6296">pause_resume</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Attributes-44867">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-intervalID-48213">intervalID</a></li>
+						<li type="i"><a href="#Anchor-tasks-37516">tasks</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Use-46919">Use</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Loading-14210">Loading Scheduler into you SVG Document</a></li>
+					<li type="A"><a href="#Anchor-Adding-23240">Adding a Task</a></li>
+					<li type="A"><a href="#Anchor-Deleting-49575">Deleting a Task</a></li>
+					<li type="A"><a href="#Anchor-Starting-3800">Starting and Stopping the Scheduler</a></li>
+					<li type="A"><a href="#Anchor-Example-23522">Example</a></li>
+				</ol>
+				<li type="I"><a href="#Anchor-Download-47383">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introduction-14210"></a>Introduction</h2>
+			<p>While writing <a href="../../../games/roids/index.htm">*-Roids</a>, I needed a convenient way to schedule various animation events. As a result, I created the Scheduler JavaScript object. A Scheduler object allows you to dynamically add and remove repeating processes from a list of processes. All processes which are controlled by the Scheduler can be stopped and started at any time.</p>
+			<hr />
+			<h2><a name="Anchor-Reference-49425"></a>Reference</h2>
+			<h3><a name="Anchor-Globals-11481"></a>Globals</h3>
+			<p><a name="Anchor-scheduler-35882"></a>scheduler</p>
+			<ul>
+				<p>This global variable is set to a new Scheduler object upon inclusion of the Scheduler.js file. In order to use the scheduler, all calls should be made using this variable.</p>
+			</ul>
+			<h3><a name="Anchor-Contants-47857"></a>Contants</h3>
+			<p><a name="Anchor-Scheduler.INTERVAL-14210"></a>Scheduler.INTERVAL</p>
+			<ul>
+				<p>Scheduler uses the setTimeout function call which requires a parameter which specifies how many milliseconds should pass before a function is called. Scheduler.INTERVAL is the number of milliseconds between calls to the Scheduler. In the reference below, one tick is equal to Scheduler.INTERVAL milliseconds. The current default is 30 milliseconds.</p>
+			</ul>
+			<h3><a name="Anchor-Methods-23240"></a>Methods</h3>
+			<p><a name="Anchor-constructor-3800"></a>constructor - new Scheduler();</p>
+			<ul>
+				<p>This method is used to create a new Scheduler object. There is no need to call this function since a scheduler object is created automatically when Scheduler.js is included into your SVG file.</p>
+			</ul>
+			<p><a name="Anchor-process-23240"></a>process()</p>
+			<ul>
+				<p>This is an object method which is called by the setTimeout method set when the scheduler is started. This method is responsible for traversing the list of Task objects which are maintained by the scheduler. Each Task object has it's decrement() method called. It is the responsibility of the Task object to interpret the meaning of decrement() call.</p>
+			</ul>
+			<p><a name="Anchor-add-3800"></a>add_task(<i>task, tick_count</i>);</p>
+			<ul>
+				<p>add_task is used to add a new task which will be maintained by the Scheduler object.</p>
+				<p><b>task</b> is a reference to a function which will be processed every tick_count ticks.</p>
+				<p><b>tick_count</b> is an integer which represents the number of ticks between each invocation of the passed task function reference.</p>
+			</ul>
+			<p><a name="Anchor-delete-35326"></a>delete_task(<i>task</i>);</p>
+			<ul>
+				<p>delete_task is used to remove a task from the Scheduler.</p>
+				<p><b>task</b> is a reference to a function which needs to be removed from the Scheduler. This parameter must be equal to the same reference used when adding the task.</p>
+			</ul>
+			<p><a name="Anchor-start-44867"></a>start();</p>
+			<ul>
+				<p>start begins the Sheduler's processing of it's tasks.</p>
+			</ul>
+			<p><a name="Anchor-stop-33869"></a>stop();</p>
+			<ul>
+				<p>stop stops the Sheduler from processing it's tasks.</p>
+			</ul>
+			<p><a name="Anchor-pause-6296"></a>pause_resume();</p>
+			<ul>
+				<p>pause_resume is a convenience function which will determine if the Scheduler is running or not. If it is running then it is stopped. If it is stopped then it is started.</p>
+			</ul>
+			<h3><a name="Anchor-Attributes-44867"></a>Properties</h3>
+			<ul>
+				<p><b><a name="Anchor-intervalID-48213"></a>intervalID</b> is the timeoutID which can be used to stop a currently waiting setTimeout call. This should never be used outside of the Scheduler object.</p>
+				<p><b><a name="Anchor-tasks-37516"></a>tasks</b> is an array of Task objects that are being handled by the Scheduler object.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Use-46919"></a>Use</h2>
+			<h3><a name="Anchor-Loading-14210"></a>Loading Scheduler into your SVG document</h3>
+			<p>In order to use the Scheduler object in your SVG file, you will need to insert a &lt;script&gt; element inside of your &lt;svg&gt; element. As an example, if Scheduler.js is in the same directory as your SVG document, then you would include the Scheduler object with the following text:</p>
+			<ul>
+				<p>&lt;script xlink:href=&quot;Scheduler.js&quot; /&gt;</p>
+			</ul>
+			<p>Note that you do not need to create an instance of a Scheduler object. This is done automatically for you when you include the Scheduler.js file into you SVG file. To refer to this automatically created Scheduler object, use the <a href="#Anchor-scheduler-35882">scheduler</a> global variable.</p>
+			<h3><a name="Anchor-Adding-23240"></a>Adding a Task</h3>
+			<p>In order for the scheduler to perform any actions for you, you first need to add some tasks for it to handle. If you have a function called animate and you would like for it to be called every 3 ticks, then you would use the following code:</p>
+			<pre>function animate() {
+  // your code here
+}
+
+scheduler.add_task(animate, 3);</pre>
+			<p>Note that you can add an anonymous function to the scheduler as shown below; however, you will not be able to remove the task later. I can implement the deletion of anonymous functions if requested.</p>
+			<pre>scheduler.add_task(
+  function() {
+    // your code here
+  }
+);</pre>
+			<h3><a name="Anchor-Deleting-49575"></a>Deleting a Task</h3>
+			<p>Later, if you decide that you no longer want this task to be processed, then you would call delete_task() as follows:</p>
+			<pre>scheduler.delete_task(animate);</pre>
+			<h3><a name="Anchor-Starting-3800"></a>Starting and Stopping the Scheduler</h3>
+			<p>Once you have added the tasks that you wish to be processed, you will need to start the Scheduler. This is done as follows:</p>
+			<pre>scheduler.start();</pre>
+			<p>Later, if you wish to stop all processing, you use the following:</p>
+			<pre>scheduler.stop();</pre>
+			<p>Please note that tasks can be added and deleted while the processor is running.</p>
+			<h3><a name="Anchor-Example-23522"></a>Example</h3>
+			<p>The following example shows the Scheduler being used to animate the transparency of a shape. Although you would most likely implement this animation using SVG's declarative syntax, this does show you a simple example of how to use the Scheduler. To see the complete details of this example, right-click (or control-click) the SVG file and View Source.</p>
+			<div align="center">
+				<embed src="scheduler_example.svg" width="120" height="120" type="image/svg+xml" /></div>
+			<p>Another example can be seen at the end of the <a href="/tutorials/geometry/bezier/index.htm">Bezier Tutorial</a> in the <a href="../../../tutorials/index.htm">Tutorials</a> section. The Scheduler is used extensively in my <a href="../../../games/index.htm">SVG Games</a>.</p>
+			<hr />
+			<h2><a name="Anchor-Download-47383"></a>Download</h2>
+			<p><a href="Scheduler.js">Scheduler.js</a></p>
+			<p />
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script xlink:href="Array.js"/>
+    <script type="text/ecmascript"><![CDATA[
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+            
+
+            var array = [ 1, 2, 3, 4, 5, 6, 7 ];
+            var odd = array.grep( function(a) { return a % 2 } );
+
+            alert(odd);
+        }
+    ]]></script>
+</svg>

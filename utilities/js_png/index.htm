@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-63720">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Exampl-47275">Examples</a></li>
+				<li type="I"><a href="#Anchor-Downloa-50109">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-63720"></a>Introduction</h2>
+			<p>JS-PNG is set of JavaScript objects used to create various types of PNG files. This idea was inspired by Roger Critchlow's <a href="http://www.elf.org/pnglets/">Pnglets</a>. Special thanks goes out to Andreas Neumann for pointing out that site.</p>
+			<hr />
+			<h2><a name="Anchor-Exampl-47275"></a>Examples</h2>
+			<p>The following example creates a simple 32x32 PNG image with three colors, only two of which are visible. A checkboard pattern is created and the final image is displayed in the SVG document using the getBase64() method.</p>
+			<p><a href="simple_png.svg" target="_blank">simple_png.svg</a></p>
+			<p>This example demonstrates all color spaces, transparency, and alpha channel support currently implemented in JS_PNG.  Please note that there appears to be a bug in ASV3 and ASV6pr which causes greyscale images with transparency not to render.  Interestingly, all PNG images following that greyscale image will not render either.  Please use the following example if you are using either of these viewers.</p>
+			<p><a href="all_types.svg" target="_blank">all_types.svg</a></p>
+			<p>This next example partially works around a bug in ASV3 and ASV6 encountered when viewing greyscale images with transparency.  My &quot;fix&quot; prevents the effects described above, but apparently transparency is not supported with greyscale and true color PNG images in ASV3 and ASV6.</p>
+			<p>The greyscale image with transparency continues to display properly in Batik 1.5 in this example; however, the transparency effect is lost in CSV 2.1.</p>
+			<p><a href="all_types_asv.svg" target="_blank">all_types_asv.svg</a></p>
+			<hr />
+			<h2><a name="Anchor-Downloa-50109"></a>Download</h2>
+			<p><a href="js_png.zip">js_png.zip</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

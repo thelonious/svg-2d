@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="no"?>
+<svg xml:space="preserve" onload="init(evt)" viewBox="0 0 300 300"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="../../../common/PrintAndParse.js" />
+    <script type="text/ecmascript" xlink:href="slider3.js" />
+    <script type="text/ecmascript"><![CDATA[
+        var slider1, slider2;
+        var triangle, t_angle, t_opacity;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            setupPrintAndParse();
+
+            var world = svgDocument.getElementById("world");
+
+            triangle  = svgDocument.getElementById("triangle");
+            t_angle   = svgDocument.getElementById("t_angle").firstChild;
+            t_opacity = svgDocument.getElementById("t_opacity").firstChild;
+
+            slider1 = new Slider(
+                10, 14, 100, 0,
+                rotateTriangle,
+                svgDocument.getElementById("body").firstChild.data,
+                svgDocument.getElementById("thumb").firstChild.data
+            );
+            slider2 = new Slider(
+                20, 80, 100, 45,
+                changeOpacity
+            );
+
+            slider1.realize(world);
+            slider2.realize(world);
+
+            slider1.setMinmax(0, 360);
+            slider2.setValue(1);
+            slider2.setMinmax(1, 0);
+        }
+
+        function rotateTriangle(angle) {
+            angle = Math.round( angle * 100 ) / 100;
+            var text = "";
+
+            text += "translate(110,110) ";
+            text += "rotate(" + angle + ")";
+
+            triangle.setAttributeNS(null, "transform", text);
+            t_angle.data = angle;
+        }
+
+        function changeOpacity(opacity) {
+            opacity = Math.round( opacity * 100 ) / 100;
+            triangle.setAttributeNS(null, "opacity", new String(opacity));
+            t_opacity.data = opacity;
+        }
+    ]]></script>
+    <defs>
+        <style type="text/css"><![CDATA[
+            .body {
+                stroke: rgb(96,0,96);
+                stroke-width: 2pt;
+                fill: rgb(192,128,192)
+            }
+            .thumb {
+                stroke: rgb(96,0,96);
+                fill: white
+            }
+        ]]></style>
+        <text id="body"><![CDATA[
+            <g>
+                <rect x="-8" y="-8" rx="8" ry="8" width="{$size+16}" height="16" class="body"/>
+            </g>
+        ]]></text>
+        <text id="thumb"><![CDATA[
+            <g>
+                <circle r="6" class="thumb"/>
+            </g>
+        ]]></text>
+    </defs>
+    <g id="world" transform="translate(75,10) rotate(45)">
+        <path id="triangle" d="M-25,-50 25,-50 0,0z" transform="translate(110,110)"
+              stroke="black" fill="rgb(150, 128, 128)"/>
+        <text x="125" y="18">Angle: <tspan id="t_angle" x="165">10</tspan></text>
+        <text x="125" y="155">Opacity: <tspan id="t_opacity" x="175">1</tspan></text>
+    </g>
+</svg>

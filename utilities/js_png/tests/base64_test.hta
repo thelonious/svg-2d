@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>PNG Generator Test</title>
+        <script src="js_png.js"></script>
+        <script>
+            function init() {
+                var width = 16;
+                var height = 16;
+
+                // create png
+                var png = new Png(width, height);
+
+                // create colors
+                png.setColor(0, 128, 128,   0, 127);
+                png.setColor(1,   0, 128, 128, 127);
+                png.setColor(2, 128,   0, 128, 127);
+
+                // plot points
+                var index = 1;
+                for ( var y = 0; y < height; y++ ) {
+                    for ( var x = 0; x < width; x++ ) {
+                        png.setPixel(x, y, index);
+                        index = 3 - index;
+                    }
+                }
+
+                png.outputBase64("base64.txt");
+            }
+        </script>
+    </head>
+    <body onload="init()">
+        <p>base64.txt should have been created</p>
+    </body>
+</html>

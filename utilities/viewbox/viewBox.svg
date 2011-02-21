@@ -1,0 +1,165 @@
+<?xml version="1.0" standalone="no"?>
+<svg onload="init(evt)"
+     viewBox="10 10 500 400" preserveAspectRatio="xMidYMid meet"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     font-size="10pt">
+    <script type="text/ecmascript" xlink:href="ViewBox.js"/>
+    <script type="text/ecmascript"><![CDATA[
+        var svgns = "http://www.w3.org/2000/svg";
+        var svgRoot;
+        
+        var viewBox;
+        var cursor;
+        var lastAlign;
+        var lastMeetOrSlice;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            svgRoot         = svgDocument.documentElement;
+            
+            viewBox         = new ViewBox(svgDocument.documentElement);
+            cursor          = svgDocument.getElementById("cursor");
+            lastAlign       = svgDocument.getElementById("xMidYMid");
+            lastMeetOrSlice = svgDocument.getElementById("meet");
+        }
+        
+        function setAlign(e) {
+            var align       = e.target.id;
+            var meetOrSlice = lastMeetOrSlice.id;
+            var PAR         = align + " " + meetOrSlice;
+            
+            svgRoot.setAttributeNS(null, "preserveAspectRatio", PAR);
+            viewBox.setPAR(PAR);
+
+            lastAlign.setAttributeNS(null, "fill", "grey");
+            e.target.setAttributeNS(null, "fill", "darkblue");
+            lastAlign = e.target;
+        }
+
+        function setMeetOrSlice(e) {
+            var align       = lastAlign.id;
+            var meetOrSlice = e.target.id;
+            var PAR         = align + " " + meetOrSlice;
+
+            svgRoot.setAttributeNS(null, "preserveAspectRatio", PAR);
+            viewBox.setPAR(PAR);
+
+            lastMeetOrSlice.setAttributeNS(null, "fill", "grey");
+            e.target.setAttributeNS(null, "fill", "darkblue");
+            lastMeetOrSlice = e.target;
+        }
+        
+        function show_coords(e) {
+            var parent = e.currentTarget;
+            var rect   = parent.childNodes.item(1);
+            var CTM    = getTransformToElement(rect);
+            var iCTM   = CTM.inverse();
+            var trans  = svgRoot.currentTranslate;
+            var scale  = svgRoot.currentScale;
+            var m      = viewBox.getTM();
+            var p1     = svgRoot.createSVGPoint();
+            var p2, p3;
+
+            m = m.scale( 1/scale );
+            m = m.translate(-trans.x, -trans.y);
+
+            p1.x = e.clientX;
+            p1.y = e.clientY;
+
+            p2 = p1.matrixTransform(m);
+            p3 = p2.matrixTransform(iCTM);
+
+            //alert("p1 = " + p1.x + "," + p1.y);
+            //alert("p2 = " + p2.x + "," + p2.y);
+            //alert("p3 = " + p3.x + "," + p3.y);
+
+            // Update cursor
+            cursor.setAttributeNS(null, "cx", p2.x);
+            cursor.setAttributeNS(null, "cy", p2.y);
+            
+            // Show the results
+            var tspans = parent.getElementsByTagNameNS(svgns, "tspan");
+            tspans.item(1).firstChild.data = e.clientX;
+            tspans.item(3).firstChild.data = e.clientY;
+            tspans.item(5).firstChild.data = Math.round(p3.x*100) / 100;
+            tspans.item(7).firstChild.data = Math.round(p3.y*100) / 100;
+        }
+     
+        /*****
+        *
+        *   getTransformToElement
+        *
+        *****/
+        function getTransformToElement(node) {
+            // Initialize our node's Current Transformation Matrix
+            var CTM = node.getCTM();
+
+            // Work our way bacwards through the ancestor nodes stopping at the
+            // SVG Document
+            while ( ( node = node.parentNode ) != svgDocument ) {
+                // Multiply the new CTM with what we've accumulated so far
+                CTM = node.getCTM().multiply(CTM);
+            }
+            
+            return CTM;
+        }
+    ]]></script>
+    <circle id="cursor" r="10" fill="black"/>
+    <g onmousemove="show_coords(evt)">
+        <rect x="10" y="10" width="500" height="400" fill="blue" opacity="0.5"/>
+        <text fill="white" transform="translate(19,10)"
+              pointer-events="none">
+            <tspan x="0" dy="10pt">Client X = </tspan><tspan> </tspan>
+            <tspan x="0" dy="10pt">Client Y = </tspan><tspan> </tspan>
+            <tspan x="0" dy="10pt">User X  = </tspan><tspan> </tspan>
+            <tspan x="0" dy="10pt">User Y  = </tspan><tspan> </tspan>
+        </text>
+        <g transform="translate(230,180)">
+            <rect width="36" height="36" fill="white" stroke="red" stroke-width="2"/>
+            <g onmousedown="setAlign(evt)">
+                <rect id="xMinYMin" x="2"  y="2"  width="10" height="10" fill="grey"/>
+                <rect id="xMidYMin" x="13" y="2"  width="10" height="10" fill="grey"/>
+                <rect id="xMaxYMin" x="24" y="2"  width="10" height="10" fill="grey"/>
+                <rect id="xMinYMid" x="2"  y="13" width="10" height="10" fill="grey"/>
+                <rect id="xMidYMid" x="13" y="13" width="10" height="10" fill="darkblue"/>
+                <rect id="xMaxYMid" x="24" y="13" width="10" height="10" fill="grey"/>
+                <rect id="xMinYMax" x="2"  y="24" width="10" height="10" fill="grey"/>
+                <rect id="xMidYMax" x="13" y="24" width="10" height="10" fill="grey"/>
+                <rect id="xMaxYMax" x="24" y="24" width="10" height="10" fill="grey"/>
+
+                <g fill="grey" stroke="white" transform="translate(2,40)">
+                    <rect id="none" width="32" height="12"/>
+                    <text x="16" y="10" fill="white" stroke="none"
+                          text-anchor="middle" pointer-events="none">none</text>
+                </g>
+            </g>
+            <g onmousedown="setMeetOrSlice(evt)">
+                <g fill="darkblue" stroke="white" transform="translate(42,5)">
+                    <rect id="meet" width="32" height="12"/>
+                    <text x="16" y="10" fill="white" stroke="none"
+                          text-anchor="middle" pointer-events="none">meet</text>
+                </g>
+                <g fill="grey" stroke="white" transform="translate(42,21)">
+                    <rect id="slice" width="32" height="12"/>
+                    <text x="16" y="10" fill="white" stroke="none"
+                          text-anchor="middle" pointer-events="none">slice</text>
+                </g>
+            </g>
+        </g>
+        <g transform="scale(4)" onmousemove="show_coords(evt)">
+            <g transform="translate(20,35) rotate(30) scale(2)">
+                <rect x="-2" y="0" width="10" height="10" fill="darkblue" opacity="0.5"/>
+                <text font-size="1pt" fill="white" transform="translate(9,0)"
+                      pointer-events="none">
+                    <tspan x="0" dy="1pt">Client X = </tspan><tspan> </tspan>
+                    <tspan x="0" dy="1pt">Client Y = </tspan><tspan> </tspan>
+                    <tspan x="0" dy="1pt">User X  = </tspan><tspan> </tspan>
+                    <tspan x="0" dy="1pt">User Y  = </tspan><tspan> </tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>

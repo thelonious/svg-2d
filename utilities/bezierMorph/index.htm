@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introduction-14210">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Reference-49425">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Methods-23240">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructor-3800">constructor</a></li>
+						<li type="i"><a href="#Anchor-create-49575">create</a></li>
+						<li type="i"><a href="#Anchor-advance-47857">advance</a></li>
+						<li type="i"><a href="#Anchor-show-11481">show_paths</a></li>
+						<li type="i"><a href="#Anchor-hide-35882">hide_paths</a></li>
+						<li type="i"><a href="#Anchor-toString-14210">toString</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Attributes-44867">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-prefix-23240">prefix</a></li>
+						<li type="i"><a href="#Anchor-paths-3800">paths</a></li>
+						<li type="i"><a href="#Anchor-shape-35326">shape</a></li>
+						<li type="i"><a href="#Anchor-min-44867">min</a></li>
+						<li type="i"><a href="#Anchor-max-33869">max</a></li>
+						<li type="i"><a href="#Anchor-delta-6296">delta</a></li>
+						<li type="i"><a href="#Anchor-position-48213">position</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Use-46919">Use</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Loading-14210">Loading Morphius into Your SVG Document</a></li>
+					<li type="A"><a href="#Anchor-Creating-37516">Creating a new Morphius Object</a></li>
+					<li type="A"><a href="#Anchor-Showing-23522">Showing the Control Paths</a></li>
+					<li type="A"><a href="#Anchor-Hiding-21683">Hiding the Control Paths</a></li>
+					<li type="A"><a href="#Anchor-Advancing-46919">Advancing</a></li>
+					<li type="A"><a href="#Anchor-Example-47383">Example</a></li>
+				</ol>
+				<li type="I"><a href="#Anchor-Download-47383">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introduction-14210"></a>Introduction</h2>
+			<p>Morphius uses the concepts from the <a href="/tutorials/geometry/bezier/index.htm">Drawing a Bezier Tutorial</a> to animate various points of a path. Morphius allows the user to create a combination of template path along with Bezier paths. The template has placeholders which are filled by moving along various user-defined Bezier paths.</p>
+			<p>Please note that the final example is rather weak. I plan on using a better example in the future as I have time. It is important to note that a path of any complexity can be defined in the template, not just a single segment as used in the example.</p>
+			<hr />
+			<h2><a name="Anchor-Reference-49425"></a>Reference</h2>
+			<h3><a name="Anchor-Methods-23240"></a>Methods</h3>
+			<p><a name="Anchor-constructor-3800"></a>constructor - new Morphius(<i>template</i>, <i>paths</i>);</p>
+			<ul>
+				<p>This method is used to create a new Morphius object. The parameters passed to the constructor method define a template which is modified over time by paths passed in the paths parameter.</p>
+				<p><b>template</b> is a string which defines a template used to create a &lt;path&gt; element controlled by the paths defined in the paths parameter. The string contains a mixture of path data and place holders. Each place holder is designated with a pound sign (#). Each pound sign will be replaced with the value calculated along each path passed in the paths parameter.</p>
+				<p><b>paths</b> is an array of paths. Currently, the only path type that is implemented is the Bezier_Curve (to be discussed in a future code talk section). There exists one path for each place holder in the template parameter.</p>
+			</ul>
+			<p><a name="Anchor-create-49575"></a>create(<i>parent</i>);</p>
+			<ul>
+				<p>Once a new Morphius object has been created, you must call create() to define the necessary SVG elements to display the curve controlled by the Morphius object.</p>
+				<p><b>parent</b> is a node in the SVG DOM which will be used as the parent of the path created by the Morphius object.</p>
+			</ul>
+			<p><a name="Anchor-advance-47857"></a>advance();</p>
+			<ul>
+				<p>advance() is used to move to the next point along each of the controlling paths. The new positions of each of the paths is applied to the curve controlled by the Morphius object. Currently, advance cycles from 0 to 1 and then back to 0. This behaviour will most likely change in the future to be more flexible.</p>
+			</ul>
+			<p><a name="Anchor-show-11481"></a>show_paths();</p>
+			<ul>
+				<p>show_paths() iterates through each path in the paths property and sends each one a show message. This is used to show the controlling paths on screen.</p>
+			</ul>
+			<p><a name="Anchor-hide-35882"></a>hide_paths();</p>
+			<ul>
+				<p>hide_paths() iterates through each path in the paths property and sends each one a hide message. This is used to hide the paths which were made visible with show_paths().</p>
+			</ul>
+			<p><a name="Anchor-toString-14210"></a>toString();</p>
+			<ul>
+				<p>toString() iterates through each path in the paths property and sends each one a position_at message. After each controlling path's position is updated, the new positions are applied to the path controlled by the Morphius object.</p>
+			</ul>
+			<h3><a name="Anchor-Attributes-44867"></a>Properties</h3>
+            <ul>
+                <p><b><a name="Anchor-prefix-23240"></a>prefix</b> is an array of strings. When a Morphius object is created, the template is divided into separate strings using the pound sign as a delimiter. Each of these strings is stored in the prefix array.</p>
+                <p><b><a name="Anchor-paths-3800"></a>paths</b> is an array of paths. Currently only Bezier_Curves are defined. Each path in the array is used to control various points in the template. There is one path for each pound sign in the template.</p>
+                <p><b><a name="Anchor-shape-35326"></a>shape</b> is a reference to a Node_Builder object which is used to create and manipulate the curve which is created by applying the controlling paths to the template.</p>
+                <p><b><a name="Anchor-min-44867"></a>min</b> is the lowest or first position along each controlling path. This defaults to 0.</p>
+                <p><b><a name="Anchor-max-33869"></a>max</b> is the highest or last position along each controlling path. This defaults to 1.</p>
+                <p><b><a name="Anchor-delta-6296"></a>delta</b> is the step that will be applied each call to advance() method. This defaults to 0.1.</p>
+                <p><b><a name="Anchor-position-48213"></a>position</b> is the last position that has been applied to the curve manipulated by the Morphius object.</p>
+            </ul>
+            <hr />
+            <h2><a name="Anchor-Use-46919"></a>Use</h2>
+            <h3><a name="Anchor-Loading-14210"></a>Loading Morphius into Your SVG document</h3>
+            <p>In order to use the Morphius object in your SVG file, you will need to insert a &lt;script&gt; element inside of your &lt;svg&gt; element. Morphius directly uses <a href="../../../dom/nodebuilder/index.htm">Node_Builder</a>, and needs <a href="../scheduler/index.htm">Scheduler</a> and Bezier_Curve to be useful. You will need to include these objects in script statements also. As an example, if Morphius.js is in the same directory as your SVG document, then you would include the Morphius object with the following text:</p>
+            <ul>
+                <p>&lt;script xlink:href=&quot;Morphius.js&quot; /&gt;</p>
+            </ul>
+            <h3><a name="Anchor-Creating-37516"></a>Creating a new Morphius object</h3>
+            <p>In order to create a Morphius object, you need to define two parameters: a template and an array of paths. A template is simply the text you would normally use in a &lt;path&gt; element with each point that is controlled by a path replaced with a pound sign. For example, if you have the following path data:</p>
+            <pre>M10,10 C50,10 50,20 50,50</pre>
+            <p>and you want to define a path for the first point (10,10 in this example), then you would create a template as follows:</p>
+            <pre>M# C50,10 50,20 50,50</pre>
+            <p>Next, you need to define a path for each pound sign in the template. Currently, paths are defined using Bezier_Curves. When creating a Bezier_Curve, you pass the new object 4 points, one for the four control points for a single segment of a Bezier curve. For example, if I want to create a path equivalent to this SVG definition:</p>
+            <pre>M10,10 10,10 10,100 10,100</pre>
+            <p>I would use the following code:</p>
+            <pre>new Bezier_Curve(10,10, 10,10, 10,100, 10,100);</pre>
+            <p>The second parameter of the Morphius contructor is an array. This allows you to define multiple paths to control multiple points in your template. Be sure to list the paths in the same order as the pound signs they control. The following example controls the first and last points of a single segment of a path:</p>
+            <pre>morphius = new Morphius(
+&quot;M# C50,10 50,20 #&quot;,
+[
+new Bezier_Curve(10,10, 10,50, 50,50, 100,50),
+new Bezier_Curve(50,50, 50,100, 0,100, 0,50)
+]
+);</pre>
+            <p>The first Bezier_Curve object defines a path for the M# point to follow. The second Bezier_Curve object defines a path for the final # point to follow.</p>
+            <h3><a name="Anchor-Showing-23522"></a>Showing the Control Paths</h3>
+            <p>To see the curves which are defined by the controlling Bezier_Curve objects, use the following code. This assumes that a Morphius object has been assigned to the morphius variable:</p>
+            <pre>morphius.show_paths();</pre>
+            <h3><a name="Anchor-Hiding-21683"></a>Hiding the Control Paths</h3>
+            <p>To hide the controlling Bezier_Curve objects shown with show_paths(), use the following code. This assumes that a Morphius object has been assigned to the morphius variable:</p>
+            <pre>morphius.hide_paths();</pre>
+            <h3><a name="Anchor-Advancing-46919"></a>Advancing</h3>
+            <p>To move to the next point along each controlling Bezier_Curve, call advance:</p>
+            <pre>morphius.advance();</pre>
+            <h3><a name="Anchor-Example-47383"></a>Example</h3>
+            <p>The following example uses <a href="../scheduler/index.htm">Scheduler</a>, <a href="../../../dom/nodebuilder/index.htm">Node_Builder</a> and Morphius to animate a single segment of a &lt;path&gt; element. This animation moves the first, second, and fourth control points with three Bezier_Curve objects. To see these paths, click show. Hide will hide the paths.</p>
+            <p>Right-click (or control-click) and View Source to see the complete details of this SVG file.</p>
+            <center>
+                <p><embed src="bezierMorph.svg" width="115" height="200" /></p>
+            </center>
+			<hr />
+			<h2><a name="Anchor-Download-47383"></a>Download</h2>
+			<p><a href="BezierMorph.js">BezierMorph.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

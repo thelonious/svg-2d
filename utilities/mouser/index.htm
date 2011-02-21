@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="../../shapes/handle/index.htm#Anchor-Introductio-63720">Introduction</a></li>
+				<li type="I"><a href="../../shapes/handle/index.htm#Anchor-Referenc-1739">Reference</a></li>
+				<ol>
+					<li type="A"><a href="../../shapes/handle/index.htm#Anchor-Method-4153">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-48379">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-41670">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-60752">realize</a></li>
+						<li type="i"><a href="#Anchor-registe-60016">register</a></li>
+						<li type="i"><a href="#Anchor-unregiste-63471">unregister</a></li>
+						<li type="i"><a href="#Anchor-registerShap-34363">registerShape </a></li>
+						<li type="i"><a href="#Anchor-unregisterShap-38209">unregisterShape </a></li>
+						<li type="i"><a href="#Anchor-unregisterAl-49605">unregisterAll </a></li>
+						<li type="i"><a href="#Anchor-unregisterShape-53350">unregisterShapes </a></li>
+						<li type="i"><a href="#Anchor-handleInde-57476">handleIndex </a></li>
+						<li type="i"><a href="#Anchor-shapeInde-60961">shapeIndex </a></li>
+						<li type="i"><a href="#Anchor-beginDra-64646">beginDrag </a></li>
+						<li type="i"><a href="#Anchor-mouseu-4969">mouseup </a></li>
+						<li type="i"><a href="#Anchor-mousemov-8924">mousemove </a></li>
+						<li type="i"><a href="#Anchor-getUserCoordinat-52312">getUserCoordinate </a></li>
+						<li type="i"><a href="#Anchor-getTransformToElemen-55997">getTransformToElement </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-1440">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-nod-10103">svgNode</a></li>
+						<li type="i"><a href="#Anchor-handle-27340">handles </a></li>
+						<li type="i"><a href="#Anchor-shape-30835">shapes </a></li>
+						<li type="i"><a href="#Anchor-lastPoin-34590">lastPoint </a></li>
+						<li type="i"><a href="#Anchor-currentNod-38115">currentNode </a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="../../shapes/handle/index.htm#Anchor-Downloa-50109">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-63720"></a>Introduction</h2>
+			<p>Mouser is a JavaScript object that is used to track the mouse. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-1739"></a>Reference</h2>
+			<h3><a name="Anchor-Method-4153"></a>Methods</h3>
+			<p><a name="Anchor-constructo-48379"></a>constructor - new Mouser(<i>parent</i>);</p>
+			<ul>
+				<p>This method creates a new Mouser object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-41670"></a>init();</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+			</ul>
+			<p><a name="Anchor-realiz-60752"></a>realize();</p>
+			<ul>
+				<p>realize() creates an transparent rectangle which covers the entire SVG image. The rectangle is appended to the top-most svg element.</p>
+			</ul>
+			<p><a name="Anchor-registe-60016"></a>register(<i>handle</i>);</p>
+			<ul>
+				<p>register() adds a new handle to the current selection. This method selects the handle.</p>
+			</ul>
+			<p><a name="Anchor-unregiste-63471"></a>unregister(<i>handle</i>);</p>
+			<ul>
+				<p>unregister() removes a handle from the current selection. This method unselects the handle. If the handle is not in the selection, then nothing is done.</p>
+			</ul>
+			<p><a name="Anchor-registerShap-34363"></a>registerShape(<i>shape</i>);</p>
+			<ul>
+				<p>registerShape() adds a new shape to the current selection.</p>
+			</ul>
+			<p><a name="Anchor-unregisterShap-38209"></a>unregisterShape(<i>shape</i>);</p>
+			<ul>
+				<p>unregisterShape() removes a shape from the current selection. The shapes handles are deselected, hidden, and unregistered. If the shape is not in the selection, then nothing is done.</p>
+			</ul>
+			<p><a name="Anchor-unregisterAl-49605"></a>unregisterAll();</p>
+			<ul>
+				<p>unregisterAll() removes all handles from the current selection. All removed handles will be deselected.</p>
+			</ul>
+			<p><a name="Anchor-unregisterShape-53350"></a>unregisterShapes();</p>
+			<ul>
+				<p>unregisterShapes() removes all shapes from the current selection. Each shape's handles are deselected, hidden, and unregistered.</p>
+			</ul>
+			<p><a name="Anchor-handleInde-57476"></a>handleIndex(<i>handle</i>) : integer;</p>
+			<ul>
+				<p>handleIndex() is used internally to determine a handle's position within the handle property array. A value of -1 is returned if the handle does not exists in the array.</p>
+			</ul>
+			<p><a name="Anchor-shapeInde-60961"></a>shapeIndex(<i>shape</i>) : integer;</p>
+			<ul>
+				<p>shapeIndex() is used internally to determine a shape;s position within the shapes property array. A value of -1 is returned if the shape does not exists in the array.</p>
+			</ul>
+			<p><a name="Anchor-beginDra-64646"></a>beginDrag(e);</p>
+			<ul>
+				<p>beginDrag() is called to initiate dragging. The mouser rectangle brought to the front of the drawing order and is activate and begins to recieve mousemove events.</p>
+			</ul>
+			<p><a name="Anchor-mouseu-4969"></a>mouseup(e);</p>
+			<ul>
+				<p>mouseup() finalizes a the current drag. The mouser rectangle is deactivate to allow other elements to recieve events.</p>
+			</ul>
+			<p><a name="Anchor-mousemov-8924"></a>mousemove(e);</p>
+			<ul>
+				<p>mousemove() moves all selected handles. All shapes effected by the move are sent update() calls.</p>
+			</ul>
+			<p><a name="Anchor-getUserCoordinat-52312"></a>getUserCoordinate(<i>node, x, y</i>); <i>// returns an SVGPoint</i></p>
+			<ul>
+				<p>getUserCoordinate() converts an x,y value to the local coordinate system used by an SVG DOM node.</p>
+				<p><b>node</b> is an SVG DOM node that will be used to establish the target coordinate system.</p>
+				<p><b>x</b> is a number that represents the x-coordinate in screen coordinates.</p>
+				<p><b>y</b> is a number that represents the y-coordinate in screen coordinates.</p>
+			</ul>
+			<p><a name="Anchor-getTransformToElemen-55997"></a>getTransformToElement(<i>node</i>); <i>// returns an SVGMatrix</i></p>
+			<ul>
+				<p>getTransformToElement() calculates the cummulative transformation that is being applied to an SVG DOM node.</p>
+				<p><b>node</b> is an SVG DOM node. All transformations that are being applied to this node will be calculated</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-1440"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-nod-10103"></a><b>svgNode</b> is reference to the SVG rectangle used by this object to capture events.</p>
+				<p><a name="Anchor-handle-27340"></a><b>handles</b> is an array of all handles in the current selection</p>
+				<p><a name="Anchor-shape-30835"></a><b>shapes</b> is an array of all shapes in the current selection</p>
+				<p><a name="Anchor-lastPoin-34590"></a><b>lastPoint</b> is a Point2D of the last mouse position. This is set by beginDrag and updated by mousemove.</p>
+				<p><a name="Anchor-currentNod-38115"></a><b>currentNode</b> is an SVG DOM node that initiated the current drag. This node is used to determine how to compensate for the current zoom and pan.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Downloa-50109"></a>Download</h2>
+			<p><a href="Mouser.js">Mouser.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>PNG Generator Test</title>
+        <script src="js_png.js"></script>
+        <script>
+        var fso;
+        var width, height;
+        
+        function init(e) {
+            fso = new ActiveXObject("Scripting.FileSystemObject");
+            width = 256;
+            height = 256;
+
+            makeTrueColorOpaque();
+        }
+
+        function makeTrueColorOpaque() {
+            var png = makeTrueColor();
+
+            writePng(png, "blank_" + width + "x" + height);
+        }
+
+        function makeTrueColor() {
+            // create png
+            var png = new PngTrueColor(width, height);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    png.setPixel(x, y, 255,255,255);
+                }
+            }
+
+            return png;
+        }
+
+        function writePng(png, name) {
+            var data = png.getData();
+            var file = fso.CreateTextFile(name, true);
+            for (var i = 0; i < data.length; i++ ) {
+                file.WriteLine(data[i]);
+            }
+            file.Close();
+        }
+        </script>
+    </head>
+    <body onload="init()">
+        <p>Files should have been created</p>
+    </body>
+</html>

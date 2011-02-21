@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a>:: <a href="../../index.htm">GUI</a>:: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-4421">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-6615">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-8698">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-11181">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-16519">init</a></li>
+						<li type="i"><a href="#Anchor-getT-20094">getTM</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-23649">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-32402">x</a></li>
+						<li type="i"><a href="#Anchor-37048">y</a></li>
+						<li type="i"><a href="#Anchor-widt-41134">width</a></li>
+						<li type="i"><a href="#Anchor-heigh-44950">height</a></li>
+						<li type="i"><a href="#Anchor-alig-48685">align</a></li>
+						<li type="i"><a href="#Anchor-meetOrSlic-52110">meetOrSlice</a></li>
+						<li type="i"><a href="#Anchor-PA-54944">PAR</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-58049">Example</a></li>
+				<li type="I"><a href="#Anchor-Downloa-61794">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-4421"></a>Introduction</h2>
+			<p>ViewBox is a JavaScript object that has been created to assist in the manipulation of the SVG's viewBox attribute.</p>
+			<p>Special thanks to <a href="http://www.jibbering.com">Jim Ley</a> and <a href="http://www.dpawson.co.uk/">Dave Pawson</a> for helping to iron out problems in the code.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-6615"></a>Reference</h2>
+			<h3><a name="Anchor-Method-8698"></a>Methods</h3>
+			<p><a name="Anchor-constructo-11181"></a>constructor - new ViewBox(<i>svgNode</i>);</p>
+			<ul>
+				<p>This method creates a new ViewBox object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-16519"></a>init(<i>svgNode</i>);</p>
+			<ul>
+				<p>init() initializes the ViewBox object. This method extracts the x, y, width, and height values from the specified SVG node's viewBox attribute. The viewBox alignment and meetOrSlice parameters are extracted from the SVG node's preserveAspectRatio property. If these attributes do not exist, then x and y default to 0, width and height default to the containing window's width and height, alignment defaults to &quot;xMidYMid&quot;, and meetOrSlice defaults to &quot;meet&quot;.</p>
+			</ul>
+			<p><a name="Anchor-getT-20094"></a>getTM() : SVGMatrix;</p>
+			<ul>
+				<p>getTM() returns an SVG Matrix. Post-multiplying an SVGPoint of the current mouse coordinate by the resulting matrix transforms the mouse coordinate to the viewBox coordinate system.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-23649"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-32402"></a><b>x</b> is a number that corresponds to the x value in the associated SVG Node's viewBox attribute.</p>
+				<p><a name="Anchor-37048"></a><b>y</b> is a number that corresponds to the y value in the associated SVG Node's viewBox attribute.</p>
+				<p><a name="Anchor-widt-41134"></a><b>width</b> is a number that corresponds to the width value in the associated SVG Node's viewBox attribute.</p>
+				<p><a name="Anchor-heigh-44950"></a><b>height</b> is a number that corresponds to the height value in the associated SVG Node's viewBox attribute.</p>
+				<p><a name="Anchor-alig-48685"></a><b>align</b> is a string that corresponds to the align value in the associated SVG Node's preserveAspectRatio attribute.</p>
+				<p><a name="Anchor-meetOrSlic-52110"></a><b>meetOrSlice</b> is a string that corresponds to the meetOrSlice value in the associated SVG Node's preserveAspectRatio attribute.</p>
+				<p><a name="Anchor-PA-54944"></a><b>PAR</b> is &quot;virtual variable&quot;. Set this variable to a value that is appropriate for the preserveAspectRatio attribute, and the value will be parsed, setting the object properties as appropriate.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-58049"></a>Example</h2>
+			<p>It is best to view this example in a page by itself: <a href="viewBox.svg" target="_blank">viewBox.svg</a></p>
+			<p>The grid at the center of the grid allows you to change the alignment of the preserveAspectRatio attribute. Clicking none will cause the image to anamorphically scale to fit the window. The meet and slice buttons allow you to set the meetOrSlice property of the preserveAspectRatio attribute.</p>
+			<p>In this example, a circle will track the mouse as long as the cursor is over the blue rectangle. The mouse coordinate is transformed to the viewBox coordinate system and is displayed in the rectangle where the mouse is. The smaller rectangle shows a method of converting the viewBox coordinate back to the local coordinates of a transformed SVG element.</p>
+			<hr />
+			<h2><a name="Anchor-Downloa-61794"></a>Download</h2>
+			<p><a href="ViewBox.js">ViewBox.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Shapes</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Shapes</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-15497">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-17640">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-19934">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-22577">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-26533">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-29027">realize</a></li>
+						<li type="i"><a href="#Anchor-translat-52866">translate</a></li>
+						<li type="i"><a href="#Anchor-refres-56851">refresh</a></li>
+						<li type="i"><a href="#Anchor-registerHandle-61398">registerHandles</a></li>
+						<li type="i"><a href="#Anchor-unregisterHandle-64693">unregisterHandles</a></li>
+						<li type="i"><a href="#Anchor-selectHandle-2592">selectHandles</a></li>
+						<li type="i"><a href="#Anchor-showHandle-5947">showHandles</a></li>
+						<li type="i"><a href="index.htm#Anchor-getIntersectionParam-12793">getIntersectionParams</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-56757">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-62575">p1</a></li>
+						<li type="i"><a href="#Anchor-4329">p2</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-12641">Example</a></li>
+				<li type="I"><a href="#Anchor-Downloa-17338">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-15497"></a>Introduction</h2>
+			<p>Line is a JavaScript object that allows you to adjust a line by manipulating <a href="../handle/index.htm">Handles</a>: one for each end of the line. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site</p>
+			<p>Line is a sub-class of the <a href="../shape/index.htm">Shape object</a>.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-17640"></a>Reference</h2>
+			<h3><a name="Anchor-Method-19934"></a>Methods</h3>
+			<p><a name="Anchor-constructo-22577"></a>constructor - new Line(<i>svgNode</i>);</p>
+			<ul>
+				<p>This method creates a new Line object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-26533"></a>init(<i>svgNode</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>svgNode</b> is an SVG line element node that will be managed by this object.</p>
+			</ul>
+			<p><a name="Anchor-realiz-29027"></a>realize();</p>
+			<ul>
+				<p>realize() constructs the SVG DOM nodes needed to visualize the handles of this widget. Event listeners are registered as needed to implement this object's functionality.</p>
+			</ul>
+			<p><a name="Anchor-translat-52866"></a>translate(<i>delta</i>);</p>
+			<ul>
+				<p>translate() translates the SVG element and the associated handles by the specified amount.</p>
+				<p><b>delta</b> is a Point2D.</p>
+			</ul>
+			<p><a name="Anchor-refres-56851"></a>refresh();</p>
+			<ul>
+				<p>refresh() applies the handle positions to the SVG element associated with this object.</p>
+			</ul>
+			<p><a name="Anchor-registerHandle-61398"></a>registerHandles();</p>
+			<ul>
+				<p>registerHandles() adds all handles used by this object to the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-unregisterHandle-64693"></a>unregisterHandles();</p>
+			<ul>
+				<p>unregisterHandles() removes all handles used by this object from the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-selectHandle-2592"></a>selectHandles();</p>
+			<ul>
+				<p>selectHandles() set the current select value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-showHandle-5947"></a>showHandles();</p>
+			<ul>
+				<p>showHandles() sets the current visibility value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-getIntersectionParam-12793"></a>getIntersectionParams() : IntersectionParams;</p>
+			<ul>
+				<p>This method returns an IntersectionParams object to specify this shape's name and the necessary parameters to find the intersection of this shape with another. The name is used by the Intersection object to determine which intersection routine to call.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-56757"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-62575"></a><b>p1</b> is a Point2D that references the first handle on the line.</p>
+				<p><a name="Anchor-4329"></a><b>p2</b> is a Point2D that references the second handle on the line.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-12641"></a>Example</h2>
+			<p>This example allows you to adjust the end-points of the lines within the SVG document. Here is a brief summary of the editing procedures:</p>
+			<ul>
+				<li>Click an unselected line once to select it.</li>
+				<li>Click a selected line to select both of the line's handles.</li>
+				<li>Shift-click an unselected line to add its handles to the current selection.</li>
+				<li>Shift-click a selected line to remove it from the current selection.</li>
+				<li>Click an unselected handle to select it</li>
+				<li>Shift-click an unselected handle to add it to the current selection</li>
+				<li>Shift-click a selected handle to remove it from the current selection</li>
+				<li>Drag a handle to manipulate the SVG element</li>
+				<li>Click the background to deselect all objects</li>
+			</ul>
+			<div align="center">
+				<embed src="line.svg" width="570" height="400" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Downloa-17338"></a>Download</h2>
+			<p><a href="Line.js">Line.js</a> - the line object only...cannot be used in isolation</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

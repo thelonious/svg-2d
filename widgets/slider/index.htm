@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Widgets</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Widgets</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-44837">Introduction </a></li>
+				<li type="I"><a href="#Anchor-Referenc-48452">Reference </a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Objec-53029">Object Variables </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Slide-57996">VERSION </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Inherite-62463">Inherited Methods </a></li>
+					<li type="A"><a href="#Anchor-Method-1683">Methods </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-6280">constructor </a></li>
+						<li type="i"><a href="#Anchor-ini-10075">init </a></li>
+						<li type="i"><a href="#Anchor-buildSV-16364">buildSVG </a></li>
+						<li type="i"><a href="#Anchor-addEventListener-27440">addEventListeners </a></li>
+						<li type="i"><a href="#Anchor-setMi-50243">setMin </a></li>
+						<li type="i"><a href="#Anchor-setMa-55681">setMax </a></li>
+						<li type="i"><a href="#Anchor-setMinma-60648">setMinmax </a></li>
+						<li type="i"><a href="#Anchor-setValu-65365">setValue </a></li>
+						<li type="i"><a href="#Anchor-setPositio-4406">setPosition </a></li>
+						<li type="i"><a href="#Anchor-findPositio-9273">findPosition </a></li>
+						<li type="i"><a href="#Anchor-mousedow-13438">mousedown </a></li>
+						<li type="i"><a href="#Anchor-mouseu-19167">mouseup </a></li>
+						<li type="i"><a href="#Anchor-mousemov-25576">mousemove </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-30293">Properties </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-43812">x </a></li>
+						<li type="i"><a href="#Anchor-53736">y </a></li>
+						<li type="i"><a href="#Anchor-node-62359">nodes </a></li>
+						<li type="i"><a href="#Anchor-siz-14318">size </a></li>
+						<li type="i"><a href="#Anchor-directio-22039">direction </a></li>
+						<li type="i"><a href="#Anchor-callbac-27837">callback </a></li>
+						<li type="i"><a href="#Anchor-mi-32875">min </a></li>
+						<li type="i"><a href="#Anchor-ma-39624">max </a></li>
+						<li type="i"><a href="#Anchor-valu-45433">value </a></li>
+						<li type="i"><a href="#Anchor-activ-51161">active </a></li>
+						<li type="i">bodyText</li>
+						<li type="i">thumbText</li>
+					</ol>
+				</ol>
+				<ol>
+					<li type="A"><a href="#Anchor-Us-17509">Use</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-Loadin-11711">Loading Slider into you SVG Document</a></li>
+						<li type="i"><a href="#Anchor-Creatin-22646">Creating a Slider</a></li>
+						<li type="i"><a href="#Anchor-Usin-56255">Using pSVG</a></li>
+						<li type="i"><a href="#Anchor-Settin-30287">Setting the Slider Value</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Exampl-3006">Example</a></li>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-14223">Download </a></li>
+				<li type="I"><a href="#Anchor-Know-8733">Known Problems </a></li>
+				<li type="I"><a href="#Anchor-Histor-15813">History</a><a href="#Anchor-Histor-1609"> </a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-44837"></a>Introduction</h2>
+			<p>Dr. Stefan Goessner was kind enough to share <a href="http://www.mecxpert.de/svg/slider.html">his Slider code</a> with the SVG community. To ease the use of multiple sliders, I created a JavaScript Slider object.</p>
+			<p>With the Slider object, you can control the following characterstics of a slider:</p>
+			<ol>
+				<li>The slider's appearance</li>
+				<li>The slider's (or thumb's) position</li>
+				<li>The angle at which the slider is drawn</li>
+				<li>The numerical range of values used by the slider</li>
+			</ol>
+			<p>Version 3.0 introduces many new features that are being used in the SVGUI project. I decided to present these concepts here since the SVGUI will advance at a slow pace.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-48452"></a>Reference</h2>
+			<h3><a name="Anchor-Objec-53029"></a>Object Variables</h3>
+			<p><a name="Anchor-Slide-57996"></a>Slider.VERSION</p>
+			<blockquote>
+				<p>This number represents the current version for this implementation of the Slider object. This property can be used by scripts to check that the correct version of the object is being used.</p>
+			</blockquote>
+			<h3><a name="Anchor-Inherite-62463"></a>Inherited Methods</h3>
+			<p>The following methods are inherited from the <a href="../widget/index.htm">Widget object</a>.</p>
+			<blockquote>
+				<p>realize(<i>svgParentNode</i>);</p>
+				<p>textToSVG(<i>text</i>);</p>
+				<p>getUserCoordinate(<i>node, x, y</i>);</p>
+				<p>getTransformToElement(<i>node</i>);</p>
+				<p>handleEvent(<i>e</i>);</p>
+			</blockquote>
+			<h3><a name="Anchor-Method-1683"></a>Methods</h3>
+			<p><a name="Anchor-constructo-6280"></a>constructor - new Slider(<i>x, y, length, direction, callback, bodyText, thumbText</i>);</p>
+			<blockquote>
+				<p>This method creates a new Slider object.</p>
+			</blockquote>
+			<ul>
+				<p><b>x</b> is a number that defines the x position of the upper-lefthand corner of the slider</p>
+				<p><b>y</b> is a number that defines the y position of the upper-lefthand corner of the slider</p>
+				<p><b>length</b> is a number that determines the width or height of the slider. If the slider is horizontal, then length represents the width of the control. If the slider is vertical, then length represents the height of the control.</p>
+				<p><b>direction</b> is a number that designates the angle, in degrees, at which the Slider object is to be drawn.</p>
+				<p><b>callback</b> is a function reference which will be called each time the slider changes value. This parameter is optional.</p>
+				<p><b>bodyText</b> is a string that uses pSVG to describe the appearance of the slider's body. This parameter is optional.</p>
+				<p><b>thumbText</b> is a string that uses pSVG to describe the appearance of the slider's thumb. This parameter is optional.</p>
+			</ul>
+			<p><a name="Anchor-ini-10075"></a>init();</p>
+			<ul>
+				<p>init() initialized all properties for this object. This method overrides the init method in the Widget object. The overridden method is called by init().</p>
+			</ul>
+			<p><a name="Anchor-buildSV-16364"></a>buildSVG();</p>
+			<ul>
+				<p>buildSVG() converts the bodyText and thumbText properties to their equivalent SVG Document Fragments. These fragments are then added to the current SVG document.</p>
+				<p>This method overrides the abstract method in the Widget object.</p>
+			</ul>
+			<p><a name="Anchor-addEventListener-27440"></a>addEventListeners();</p>
+			<ul>
+				<p>addEventListeners() attaches all events listeners to the top-most slider node. These event listeners implement the dragging fuctionality of the Slider object.</p>
+				<p>This method overrides the abstract method in the Widget object.</p>
+			</ul>
+			<p><a name="Anchor-setMi-50243"></a>setMin(<i>min</i>);</p>
+			<blockquote>
+				<p>setMin() sets the lowest value to be used by the Slider object. If the current value property is smaller than the min parameter, then the value property is changed to the min parameter. The thumb position will be updated as necessary. The Slider object allows the min property to be greater than the max property. This effectively swaps the ending values of the Slider object.</p>
+				<p><b>min</b> is a number that represents the smallest value used by the Slider object</p>
+			</blockquote>
+			<p><a name="Anchor-setMa-55681"></a>setMax(<i>max</i>);</p>
+			<blockquote>
+				<p>setMax() sets the highest value to be used by the Slider object. If the current value property is larger than the max parameter, then the value property is changed to the max parameter. The thumb position will be updated as necessary. The Slider object allows the max property to be less than the min property. This effectively swaps the ending values of the Slider object.</p>
+				<p><b>max</b> is a number which represents the largest value used by the Slider object</p>
+			</blockquote>
+			<p><a name="Anchor-setMinma-60648"></a>setMinmax(<i>min, max</i>);</p>
+			<blockquote>
+				<p>setMinmax() sets both the min and max properites of the Slider object. See setMin() and setMax() for further details.</p>
+			</blockquote>
+			<p><a name="Anchor-setValu-65365"></a>setValue(<i>value, call_callback</i>);</p>
+			<blockquote>
+				<p>setValue() sets the value property to the value parameter. The thumb's position is updated to the proper location for the passed value. If call_callback is true and the callback property are defind, then the callback function is called with the current value.</p>
+				<p><b>value</b> is a number to which the value property will be set</p>
+				<p><b>call_callback</b> is a boolean flag which determines if the callback function will be called by setValue().</p>
+			</blockquote>
+			<p><a name="Anchor-setPositio-4406"></a>setPosition(<i>position, call_callback</i>);</p>
+			<blockquote>
+				<p>setPosition() sets the value property based on the position parameter. The thumb's position is updated to the proper location for the passed value. If call_callback is true and the callback property are defind, then the callback function is called with the current value. This function is used internally to convert the mouse coordinate to the correct value. There should be no need to use this function.</p>
+				<p><b>position</b> is a number which represents the distance from the origin of the slider. This number is converted to the equivalent slider value.</p>
+				<p><b>call_callback</b> is a boolean flag which determines if the callback function will be called by setValue().</p>
+			</blockquote>
+			<p><a name="Anchor-findPositio-9273"></a>findPosition(<i>e</i>);</p>
+			<blockquote>
+				<p>findPosition() determines how far the user's mouse position is from the origin of the slider. The current implementation of this function allows for the Slider object to be rotated to any angle.</p>
+			</blockquote>
+			<p><a name="Anchor-mousedow-13438"></a>mousedown(<i>e</i>);</p>
+			<ul>
+				<p>mousedown() is an event handler that is called when the mouse button is pressed over the slider graphics. This method activates the slider.</p>
+				<p><b>e</b> is the event object passed by the mousedown event.</p>
+			</ul>
+			<p><a name="Anchor-mouseu-19167"></a>mouseup(<i>e</i>);</p>
+			<ul>
+				<p>moueup() is an event handler that is called when the mouse button is released over the slider graphics. This method deactivates the slider.</p>
+				<p><b>e</b> is the event object passed generated my the mouseup event.</p>
+			</ul>
+			<p><a name="Anchor-mousemov-25576"></a>mousemove(<i>e</i>);</p>
+			<ul>
+				<p>mousemove() is an event handler that is called when the mouse is moved over the slider graphics. If the slider is active, this method calls set_value().</p>
+				<p><b>e</b> is the event object passed generated my the mousemove event.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-30293"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-43812"></a><b>x</b> is the x coordinate of the upper-lefthand corner of the slider. This property is inherited from the Widget object</p>
+				<p><a name="Anchor-53736"></a><b>y</b> is the y coordinate of the upper-lefthand corner of the slider. This property is inherited from the Widget object</p>
+				<p><a name="Anchor-node-62359"></a><b>nodes</b> is an object that is inherited from the Widget object. The properties of this object are used to reference key SVG DOM nodes. Slider defines the following nodes:</p>
+			</ul>
+			<div style="margin-left: 75; margin-right: 75">
+				<p><b>nodes.parent</b> is the parent node of the slider graphics. This can be used to delete the slider from the SVG document.</p>
+				<p><b>nodes.body</b> is a reference to the body node of the slider.</p>
+				<p><b>nodes.thumb</b> is a reference to the thumb node of the slider.</p>
+			</div>
+			<ul>
+				<p><a name="Anchor-siz-14318"></a><b>size</b> is the length of the slider dependent on the direction of the slider</p>
+				<p><a name="Anchor-directio-22039"></a><b>direction</b> is the angle at which the slider is drawn.</p>
+				<p><a name="Anchor-callbac-27837"></a><b>callback</b> is function reference that will be called (optionally) when setValue() is called.</p>
+				<div align="left">
+					<p><a name="Anchor-mi-32875"></a><b>min</b> is the minimum value of the slider. Note that min can be larger than max to effectively swap the end values of the slider</p>
+					<p><a name="Anchor-ma-39624"></a><b>max</b> is the maximum value of the slider. Note that max can be smaller than min to effectively swap the end values of the slider.</p>
+					<p><a name="Anchor-valu-45433"></a><b>value</b> is a number representing the current value of the slider</p>
+					<p><a name="Anchor-activ-51161"></a><b>active</b> is a boolean used to determine if the current slider is active. This is used internally only.</p>
+				</div>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Us-17509"></a>Use</h2>
+			<h3><a name="Anchor-Loadin-11711"></a>Loading Slider into your SVG document</h3>
+			<p>In order to use the Slider object in your SVG file, you will need to insert a &lt;script&gt; element inside of your &lt;svg&gt; element. As an example, if slider.js.gz is in the same directory as your SVG document, then you would include the Slider object with the following text:</p>
+			<ul>
+				<p>&lt;script xlink:href=&quot;slider.js.gz&quot; /&gt;</p>
+			</ul>
+			<p>Please note that the gzip file, slider.js.gz, contains all supporting files that are need to use the Slider object.</p>
+			<h3><a name="Anchor-Creatin-22646"></a>Creating a Slider</h3>
+			<p>In order to create a new Slider object, you need to know the following: the upper-lefthand corner of the slider, the length of the slider, a callback function, the parent node of the slider graphics. The following section will discuss how to customize the appearance of your Slider.</p>
+			<p>The following line creates a slider at (50,200) with a length of 100 and appends it to the top-most SVG element. The function named &quot;my_callback&quot; will be invoked whenever the slider's position is updated.</p>
+			<pre>slider = new Slider(
+    50, 200, 100, 0,
+    my_callback
+);
+slider.realize(svgDocument.documentElement);</pre>
+			<h3><a name="Anchor-Usin-56255"></a>Using pSVG</h3>
+			<p>The Slider code allows for you define the appearance of the slider body and slider thumb. This code uses a variant of SVG that is being called pSVG, which stands for parametric SVG. pSVG looks exactly like SVG; however, two new features have been introduced.</p>
+			<p>The first feature allows for you to refer to any property value that exists within the Slider object. To access the object's property, pre-pend a dollar sign, '$', to the property name.</p>
+			<p>The second feature allows for you to execute any JavaScript code. The JavaScript code is replaced with the value that it returns upon execution.</p>
+			<p>Here are some examples to illustrate pSVG in use.</p>
+			<pre>&lt;rect x=&quot;$x&quot; y=&quot;$y&quot; width=&quot;100&quot; height=&quot;16&quot; fill=&quot;rgb($shade,$shade,$shade)&quot;/&gt;
+</pre>
+			<p>When the preceding pSVG is used, the rectangle's x value will be set to the value of the Slider's x property. Likewise the y value will be set to the value of the Slider's y value. If the slider object has a &quot;shade&quot; property, then this value will be used to create a shade of grey of the rectangle.</p>
+			<p>pSVG is greedy when it comes to property names. Normally, this will not be a problem. However, if you need text to immediately follow a property without any spaces, you will need to slightly modify your property reference.</p>
+			<pre>&lt;text&gt;${direction}-wise&lt;text&gt;</pre>
+			<p>The preceding example will replace ${direction} with the direction property from the Slider object. The curly braces isolate the name of the property reference from the surrounding text.</p>
+			<pre>&lt;rect x=&quot;$x&quot; y=&quot;$y&quot; width=&quot;{$width + 5}&quot; height=&quot;{$height + 5}/&gt;
+</pre>
+			<p>The preceding example introduces the method used to execute a line of JavaScript. All text contained within curly braces, '{' and '}', will be eval'ed by the JavaScript interpreter. The value returned by eval'ing this statement will take the place of the curly braces and all text contained within the curly braces. It is important to note that property references, like $width in this example, will be replaced before the text is executed. Although this example simply increases the width and height by five units, any JavaScript code can be used to create the resulting SVG. The entire contents of the pSVG can be composed of JavaScript alone...as long as it returns valid SVG. For example, an application could use getUrl() to allow a server to dynamically generate the slider's SVG document fragment.</p>
+			<h3><a name="Anchor-Settin-30287"></a>Setting the Slider Value</h3>
+			<p>Sometimes it is necessary to have another function change the value of your slider object. In order to perform this function, you would use something like the following:</p>
+			<pre>slider.setValue(100);</pre>
+			<p>In this example, the slider thumb will be moved to the 100 position.</p>
+			<h3><a name="Anchor-Exampl-3006"></a>Example</h3>
+			<p>The following example shows two Sliders used to manipulate a triangle. To see the complete details of this example, right-click (or control-click) the SVG file and View Source. Viewing the source will show you how the actual body and thumb elements are defined in the &lt;defs&gt; section of the SVG document.</p>
+			<p>There is a lot going on in this simple example. If you look at the source, you will see that the sliders are being added to the &lt;g&gt; element whose id is &quot;world&quot;. You may notice that rotation and translation transformations are being applied to the &lt;g&gt; element. When the sliders are added to the &lt;g&gt; element, these transforms will apply to them too. The current version of the Slider object now knows how to compensate for any transform that is applied to a slider or to any of its ancestors.</p>
+			<p>Try panning and zooming the SVG image. Notice that the sliders still work as expected. The same code that compensates for transformations applied to a slider also compensates for the current zoom and pan settings.</p>
+			<p>The top-most slider's appearance has been redefined using pSVG. Please view the &lt;defs&gt; section to see the definitions for the slider body and the slider thumb.</p>
+			<div align="center">
+				<embed src="slider_demo3.svg" width="400" height="300" type="image/svg+xml" /></div>
+			<p><a href="../../utilities/picker/index.htm">Color Picker</a> is another example using multiple sliders.</p>
+			<hr />
+			<h2><a name="Anchor-Downloa-14223"></a>Download</h2>
+			<p><a href="Slider.js">Slider.js</a> - this file contains the Slider source only. You will need to download the Widget object in order for this code to function.</p>
+			<p><a href="slider3.js.gz">slider3.js.gz</a> - this file contains all files that are needed to create and use a Slider object.</p>
+			<hr />
+			<h2><a name="Anchor-Know-8733"></a>Known Problems</h2>
+			<ul>
+				<li>If you drag the mouse out of the slider, let up on the mouse, and then return to the slider, the slider will continue to update as if the mouse button is being pressed. This can be fixed by using an transparent rectangle over the entire document to capture mouse events. This will need to be added to the Widget object.</li>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Histor-15813"></a>History</h2>
+			<h3>Version 3.0</h3>
+			<ol>
+				<li>No longer clones DOM to create slider body and slider thumb</li>
+				<li>Implemented use of pSVG to describe the slider appearance</li>
+				<li>Removed Slider class property</li>
+				<li>Removed class event handlers</li>
+				<li>Uses Widget's event dispatcher (handleEvent) to invoke an eventListener on the active slider</li>
+				<li>Default appearances are built into the Slider class</li>
+				<li>Uses methods from Widget object to compensate for any transformation that are being applied to the slider. This compensates for the current pan and zoom</li>
+			</ol>
+			<h3>Version 2.0</h3>
+			<ol>
+				<li>Removed dependency on Node_Builder class</li>
+				<li>Clones pre-existing elements from svg document to create the thumb and body of the slider. Typically, these elements are defined in the &lt;defs&gt; section of the svg file.</li>
+				<li>Default slider has a more standard look</li>
+			</ol>
+			<h3>Version 1.1</h3>
+			<ol>
+				<li>Changed the event handlers to global functions instead of object methods. This was due to a problem in Netscape. If it's possible to get around this problem, then I will make these object methods in the future.</li>
+				<li>Added VERSION property</li>
+				<li>Changed sliders global to object property</li>
+				<li>Added min and max properties and implemented scaling with these properties</li>
+				<li>Implemented direction property to support any angle</li>
+				<li>Moved initialization code to it's own method to simplifiy overriding the Slider object</li>
+				<li>Added rotation support to make_controls() method</li>
+				<li>Added set_min(), set_max(), and set_minmax() methods</li>
+				<li>Changed set_value() to support min and max properties</li>
+				<li>Added set_position() to convert from the linear position on the slider to the value property</li>
+				<li>Added find_position() to convert from mouse coordinates to the linear position on the slider.</li>
+				<li>Altered SliderMove and SliderClick to call find_position() which removed redundant code and added the possibility for the user to override the mouse coordinate to linear position conversion.</li>
+				<li>getAttributeNS() is now coerced to a string in Find_Slider() to get around a Netscape bug.</li>
+			</ol>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

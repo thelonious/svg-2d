@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Shapes</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Shapes</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-35164">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-37748">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-40222">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-42515">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-46350">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-53691">realize</a></li>
+						<li type="i"><a href="#Anchor-refres-3485">refresh</a></li>
+						<li type="i"><a href="#Anchor-registerHandle-7281">registerHandles</a></li>
+						<li type="i"><a href="#Anchor-unregisterHandle-11547">unregisterHandles</a></li>
+						<li type="i"><a href="#Anchor-selectHandle-15002">selectHandles</a></li>
+						<li type="i"><a href="#Anchor-showHandle-18887">showHandles</a></li>
+						<li type="i"><a href="index.htm#Anchor-getIntersectionParam-39964">getIntersectionParams</a></li>
+						<li type="i"><a href="#Anchor-pointInPolygo-31384">pointInPolygon</a></li>
+						<li type="i"><a href="#Anchor-getAre-39235">getArea</a></li>
+						<li type="i"><a href="#Anchor-isClockwis-43311">isClockwise</a></li>
+						<li type="i"><a href="#Anchor-isCounterClockwis-47357">isCounterClockwise</a></li>
+						<li type="i"><a href="#Anchor-isConcav-52464">isConcave</a></li>
+						<li type="i"><a href="#Anchor-isConve-56510">isConvex</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-6842">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-handle-24297">handles</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-3734">Example</a></li>
+				<li type="I"><a href="#Anchor-Downloa-28052">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<p>Polygon is a JavaScript object that allows you to adjust a polygon by manipulating <a href="../handle/index.htm">Handles</a>: one for each vertex of the polygon. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site</p>
+			<p>Polygon is a sub-class of the <a href="../shape/index.htm">Shape object</a>.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-37748"></a>Reference</h2>
+			<h3><a name="Anchor-Method-40222"></a>Methods</h3>
+			<p><a name="Anchor-constructo-42515"></a>constructor - new Polygon(<i>svgNode</i>);</p>
+			<ul>
+				<p>This method creates a new Polygon object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-46350"></a>init(<i>svgNode</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object. This method parses the points attribute of the svgNode. Each vertex is used to create an associated Handle object.</p>
+				<p><b>svgNode</b> is an SVG polygon element to be managed by this object.</p>
+			</ul>
+			<p><a name="Anchor-realiz-53691"></a>realize();</p>
+			<ul>
+				<p>realize() constructs the SVG DOM nodes needed to visualize the handles of this widget. Any event listeners that are used by this object will be registered by this method.</p>
+			</ul>
+			<p><a name="Anchor-refres-3485"></a>refresh();</p>
+			<ul>
+				<p>refresh() applies the handle positions to the SVG element associated with this object.</p>
+			</ul>
+			<p><a name="Anchor-registerHandle-7281"></a>registerHandles();</p>
+			<ul>
+				<p>registerHandles() adds all handles used by this object to the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-unregisterHandle-11547"></a>unregisterHandles();</p>
+			<ul>
+				<p>unregisterHandles() removes all handles used by this object from the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-selectHandle-15002"></a>selectHandles();</p>
+			<ul>
+				<p>selectHandles() set the current select value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-showHandle-18887"></a>showHandles();</p>
+			<ul>
+				<p>showHandles() sets the current visibility value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-getIntersectionParam-39964"></a>getIntersectionParams() : IntersectionParams;</p>
+			<ul>
+				<p>This method returns an IntersectionParams object to specify this shape's name and the necessary parameters to find the intersection of this shape with another. The name is used by the Intersection object to determine which intersection routine to call.</p>
+			</ul>
+			<p><a name="Anchor-pointInPolygo-31384"></a>pointInPolygon(<i>point</i>) : boolean;</p>
+			<ul>
+				<p>pointInPolygon() determines if the specified Point2D is within the polygon.</p>
+			</ul>
+			<p><a name="Anchor-getAre-39235"></a>getArea() : float;</p>
+			<ul>
+				<p>getArea() returns the area of the polygon managed by this object. Negative values are returned for polygons whose vertices are drawn in a clockwise order. Please note that the current implementation does not return correct values for self-intersecting polygons.</p>
+			</ul>
+			<p><a name="Anchor-isClockwis-43311"></a>isClockwise() : boolean;</p>
+			<ul>
+				<p>isClockwise() determines if the vertices of the polygon are in a clockwise order.</p>
+			</ul>
+			<p><a name="Anchor-isCounterClockwis-47357"></a>isCounterClockwise() : boolean;</p>
+			<ul>
+				<p>isCounterClockwise() determines if the vertices of the polygon are in a counter-clockwise order.</p>
+			</ul>
+			<p><a name="Anchor-isConcav-52464"></a>isConcave() : boolean;</p>
+			<ul>
+				<p>isConcave() determines if the polygon is concave.</p>
+			</ul>
+			<p><a name="Anchor-isConve-56510"></a>isConvex() : boolean;</p>
+			<ul>
+				<p>isConvex() determines if the polygon is convex.</p>
+			</ul>
+			<p><a name="Anchor-setCallbac-2856"></a>setCallback(<i>callback</i>);</p>
+			<ul>
+				<p>setCallback() sets the callback property of all handles to the specified value.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-6842"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-handle-24297"></a><b>handles</b> is an array of Handles. Each handle corresponds to a vertex on the polygon</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-3734"></a>Example</h2>
+			<p>This example allows you to adjust the vertices of the polygons within the SVG document. Here is a brief summary of the editing procedures:</p>
+			<ul>
+				<li>Click an unselected polygon once to select it.</li>
+				<li>Click a selected polygon to select all of its handles.</li>
+				<li>Shift-click an unselected polygon to add all of its handles it to the current selection.</li>
+				<li>Shift-click a selected polygon to remove it from the current selection.</li>
+				<li>Click an unselected handle to select it</li>
+				<li>Shift-click an unselected handle to add it to the current selection</li>
+				<li>Shift-click a selected handle to remove it from the current selection</li>
+				<li>Drag a handle to manipulate the SVG element</li>
+				<li>Click the background to deselect all objects</li>
+			</ul>
+			<p />
+			<div align="center">
+				<embed src="polygon.svg" width="570" height="400" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Downloa-28052"></a>Download</h2>
+			<p><a href="Polygon.js">Polygon.js </a>- the polygon object only...cannot be used in isolation</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-28768">Introduction </a></li>
+				<li type="I"><a href="#Anchor-Referenc-30731">Reference </a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-33024">Methods </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-foreac-35067">foreach </a></li>
+						<li type="i"><a href="#Anchor-ma-37250">map</a><a href="../mouser/index.htm#Anchor-currentNod-38115"> </a></li>
+					</ol>
+					<ol />
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-40665">Example </a></li>
+				<li type="I"><a href="#Anchor-Downloa-44090">Download </a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-28768"></a>Introduction</h2>
+			<p>Array extends the functionality of JavaScript's built-in Array object. I worked with Perl quite a bit before learning JavaScript. As a result, I found that I missed a few things from Perl. Specifically, I really wanted the functionality of &quot;foreach&quot; and the &quot;map&quot; function. This JavaScript file adds a close approximation to those Perl methods.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-30731"></a>Reference</h2>
+			<h3><a name="Anchor-Method-33024"></a>Methods</h3>
+			<p><a name="Anchor-foreac-35067"></a>foreach(<i>func</i>);</p>
+			<ul>
+				<p>foreach() loops through all of the members of the Array object. The function literal will be called once for each member of the array and will have the current member passed into as a parameter.</p>
+			</ul>
+			<p><a name="Anchor-ma-37250"></a>map(<i>func</i>);</p>
+			<ul>
+				<p>map() functions very similarly to foreach; however, the results of each invocation of the function literal is appended to a resulting array. Once all members of the current Array object have been visited, an array of the results is returned from this method.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-40665"></a>Example</h2>
+			<p>The following example creates an array, increments each member by 1 (returning a new array), and then displays each member in an alert dialog, one member at a time.</p>
+			<pre>var array1 = [1, 2, 3];
+var array2;
+
+// Add one to each member of array1
+// A new array is returned
+// The original array is not effected
+array2 = array1.map(
+    function(elem) {
+        return elem + 1;
+    }
+);
+
+// Show each member of the array in an alert dialog box
+array2.foreach(
+    function(elem) {
+        alert(elem)
+    }
+);</pre>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

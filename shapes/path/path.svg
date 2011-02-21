@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="no"?>
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script xlink:href="../../2D.js"/>
+    <script><![CDATA[
+        var svgns  = "http://www.w3.org/2000/svg";
+        var azap, mouser;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            azap   = new AntiZoomAndPan();
+            mouser = new Mouser();
+
+            var nodes = svgDocument.getElementsByTagNameNS(svgns, "path");
+            var background = svgDocument.getElementById("background");
+
+            for ( var i = 0; i < nodes.length; i++ ) {
+                var path = new Path( nodes.item(i) );
+
+                path.realize();
+            }
+
+            azap.appendNode(mouser.svgNode);
+            azap.appendNode(background);
+        }
+    ]]></script>
+    <defs>
+		<linearGradient id="gradient45" x1="0%" y1="0%" x2="100%" y2="100%"
+			spreadMethod="pad" gradientUnits="objectBoundingBox">
+			<stop offset="0%" stop-color="rgb(235,235,235)"/>
+			<stop offset="100%" stop-color="rgb(0,0,0)"/>
+		</linearGradient>
+    </defs>
+    <rect id="background" width="100%" height="100%" opacity="0"
+          onmousedown="mouser.unregisterShapes()"/>
+    <path d="M50,120 Q100,20 150,120 L250,120 C300,20 350,120 400,20"
+          stroke="yellow" stroke-width="10" stroke-dasharray="5,5"
+          fill="none"/>
+    <path d="M50,220 Q100,120 150,220 L250,220 C300,120 350,220 400,120"
+          stroke="blue" stroke-width="5" fill="none"/>
+    <path d="M50,320 Q100,220 150,320 L250,320 C300,220 350,320 400,220"
+          stroke="url(#gradient45)" stroke-width="5" fill="none"/>
+</svg>

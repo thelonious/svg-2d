@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Math Object</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">Tutorials</a> :: Geometry</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="index.htm#Anchor-Introductio-44073">Introduction </a></li>
+				<li type="I"><a href="index.htm#Anchor-Referenc-47678">Reference</a></li>
+				<ol>
+					<li type="A"><a href="index.htm#Anchor-Method-51373">Methods</a></li>
+					<ol>
+						<li type="i"><a href="index.htm#Anchor-constructo-54808">constructor</a></li>
+						<li type="i"><a href="index.htm#Anchor-ini-58133">init</a></li>
+						<li type="i"><a href="index.htm#Anchor-eva-61698">eval</a></li>
+						<li type="i"><a href="index.htm#Anchor-multipl-378">multiply</a></li>
+						<li type="i"><a href="index.htm#Anchor-simplif-5025">simplify</a></li>
+						<li type="i"><a href="index.htm#Anchor-bisectio-9100">bisection</a></li>
+						<li type="i"><a href="index.htm#Anchor-toStrin-12716">toString</a></li>
+						<li type="i"><a href="index.htm#Anchor-getDerivativ-16050">getDerivative</a></li>
+						<li type="i"><a href="index.htm#Anchor-getRoot-20367">getRoots</a></li>
+						<li type="i"><a href="index.htm#Anchor-getRootsInInterva-5076">getRootsInInterval</a></li>
+						<li type="i"><a href="index.htm#Anchor-getLinearRoo-24382">getLinearRoot</a></li>
+						<li type="i"><a href="index.htm#Anchor-getQuadraticRoot-31362">getQuadraticRoots</a></li>
+						<li type="i"><a href="index.htm#Anchor-getCubicRoot-35028">getCubicRoots</a></li>
+						<li type="i"><a href="index.htm#Anchor-getQuarticRoot-40896">getQuarticRoots</a></li>
+					</ol>
+					<li type="A"><a href="index.htm#Anchor-Clas-11102">Class Properties</a></li>
+					<ol>
+						<li type="i"><a href="index.htm#Anchor-TOLERANC-16259">TOLERANCE</a></li>
+						<li type="i"><a href="index.htm#Anchor-ACCURAC-21126">ACCURACY</a></li>
+					</ol>
+					<li type="A"><a href="index.htm#Anchor-Propertie-25592">Properties</a></li>
+					<ol>
+						<li type="i"><a href="index.htm#Anchor-coef-29348">coefs</a></li>
+						<li type="i"><a href="index.htm#Anchor-degre-33273">degree</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="index.htm#Anchor-Exampl-50005">Example</a></li>
+				<li type="I"><a href="index.htm#Anchor-Downloa-36769">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-44073"></a>Introduction</h2>
+			<p>Polynomial is a JavaScript object used to manipulate polynomials. This object was created to encapsulate root finding functions needed by the intersection methods in the <a href="../intersection/index.htm">Intersection object</a>.</p>
+			<p>getCubicRoots() and getQuarticRoots() was derived from David Eberly's excellent game engine source which can be found at <a href="http://www.magic-software.com">his site</a>. If you are at all interested in 3D gaming algorithms, then I highly recommend his &quot;3D Game Engine Design&quot; book (ISBN 1-55860-593-2).</p>
+			<p>This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-47678"></a>Reference</h2>
+			<h3><a name="Anchor-Method-51373"></a>Methods</h3>
+			<p><a name="Anchor-constructo-54808"></a>constructor - new Polynomial(<i>&lt;coefficient&gt;+</i>);</p>
+			<ul>
+				<p>This method creates a new Polynomial object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-58133"></a>init(<i>&lt;coefficient&gt;+</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p>One or more <b>coefficient</b>s initialize the Polynomial. The coefficients are in order by highest degree monomial first. For example, the following example initializes a Polynomial object for: 3x^4 + 2x^2 + 5:</p>
+				<pre>var poly = new Polynomial(3, 0, 2, 0, 5);</pre>
+				<p>All coefficients from highest degree to degree 0 must be provided. A zero is used for monomials that are not present in the polynomial.</p>
+				<p>NOTE: The polynomial coefficients are stored in an array in the reverse order to how they were specified. This has the benefit that the coefficient's position in the array corresponds to the degree of the monomial to which it belongs.</p>
+			</ul>
+			<p><a name="Anchor-eva-61698"></a>eval(<i>x</i>) : Number;</p>
+			<ul>
+				<p>eval() evalutes the polynomial at the specified x value.</p>
+				<p><b>x</b> is a number that is &quot;plugged into&quot; the polynomial to evaluate it.</p>
+			</ul>
+			<p><a name="Anchor-multipl-378"></a>multiply(<i>that</i>) : Polynomial;</p>
+			<ul>
+				<p>multiply() multiplies two Polynomial objects together. A new polynomial is returned.</p>
+				<p><b>that</b> is the Polynomial with which to multiply the current polynomial.</p>
+			</ul>
+			<p><a name="Anchor-simplif-5025"></a>simplify();</p>
+			<ul>
+				<p>simplify() reduces the degree of the polynomial. Each monomial, highest degree first, is visited. If the absolute value of the monomial's coefficient is below a certain value, then the monomial is removed from the polynomial. This method is called by the getRoots() method.</p>
+			</ul>
+			<p><a name="Anchor-bisectio-9100"></a>bisection(<i>min, max</i>) : Number;</p>
+			<ul>
+				<p>bisection() attempts to locate a root within min and max for the current polynomial. The interval is successively divided in half until a root is found. If successful, the root is return; otherwise, null is returned.</p>
+				<p><b>min</b> is the minimum value of the interval to check for a root.</p>
+				<p><b>max</b> is the maximum value of the interval to check for a root.</p>
+			</ul>
+			<p><a name="Anchor-toStrin-12716"></a>toString() : String;</p>
+			<ul>
+				<p>toString() converts the Polynomial object to a string representation.</p>
+			</ul>
+			<p><a name="Anchor-getDerivativ-16050"></a>getDerivative() : Polynomial;</p>
+			<ul>
+				<p>getDerivative() returns the derivative of the current polynomial.</p>
+			</ul>
+			<p><a name="Anchor-getRoot-20367"></a>getRoots() : Array;</p>
+			<ul>
+				<p>getRoots() attempts to find the roots of the current polynomial. This method will attempt to decrease the degree of the polynomial using the simplify() method. Once the degree is determined, getRoots() dispatches the appropriate root-finding method for the degree of the polynomial.</p>
+				<p>NOTE: At this time, polynomials above the 4'th degree are not supported.</p>
+			</ul>
+			<p><a name="Anchor-getRootsInInterva-5076"></a>getRootsInInterval(<i>min, max</i>) : Array;</p>
+			<ul>
+				<p>getRootsInInterval() finds the roots of the current polynomial within the closed interval [min, max]. This method makes use of getDerivative() and bisection().</p>
+			</ul>
+			<p><a name="Anchor-getLinearRoo-24382"></a>getLinearRoot() : Array of Numbers;</p>
+			<ul>
+				<p>getLinearRoot() returns the root of a linear polynomial (degree equals one).</p>
+			</ul>
+			<p><a name="Anchor-getQuadraticRoot-31362"></a>getQuadraticRoots() : Array of Numbers;</p>
+			<ul>
+				<p>getQuadraticRoots() returns the roots of a quadratic polynomial (degree equals two).</p>
+			</ul>
+			<p><a name="Anchor-getCubicRoot-35028"></a>getCubicRoots() : Array of Numbers;</p>
+			<ul>
+				<p>getCubicRoots() returns the roots of a cubic polynomial (degree equals three).</p>
+			</ul>
+			<p><a name="Anchor-getQuarticRoot-40896"></a>getQuarticRoots() : Array of Numbers;</p>
+			<ul>
+				<p>getQuarticRoots() returns the roots of a quartic polynomial (degree equals four).</p>
+			</ul>
+			<h3><a name="Anchor-Clas-11102"></a>Class Properties</h3>
+			<ul>
+				<p><a name="Anchor-TOLERANC-16259"></a><b>TOLERANCE</b> is a number used to determine if a number is close enough to zero to be considered zero.</p>
+				<p><a name="Anchor-ACCURAC-21126"></a><b>ACCURACY</b> is an integer that is used to determine the minimum number of digits of accuracy to be returned by a result.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-25592"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-coef-29348"></a><b>coefs</b> is an array of numbers. Each number corresponds to a monomial in the polynomial. The position of the coefficient in the array corresponds to the degree of the monomial to which it belongs.</p>
+				<p><a name="Anchor-degre-33273"></a><b>degree</b> is &quot;virtual variable&quot; that returns the degree of the polynomial represented by the Polynomial object.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-50005"></a>Example</h2>
+			<p>This example creates 4 monomials. These are multiplied together, creating successively higher degree polynomials.</p>
+			<p>Each polynomial is plotted (red markers) using the eval() method. The toString() methods creates the text representation of the polynomial that is displayed to the right of the x-axis (the gray line). The getRoots() method is used to display the roots of each polynomial (blue markers).</p>
+			<div align="center">
+				<embed src="polynomial.svg" width="400" height="500" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Downloa-36769"></a>Download</h2>
+			<p><a href="Polynomial.js">Polynomial.js</a> - the Intersection object only</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

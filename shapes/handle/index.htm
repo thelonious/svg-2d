@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Shapes</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Shapes</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-63720">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-1739">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-4153">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-6336">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-8900">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-11974">realize</a></li>
+						<li type="i"><a href="#Anchor-translat-9672">translate </a></li>
+						<li type="i"><a href="#Anchor-refres-36571">refresh</a></li>
+						<li type="i"><a href="#Anchor-selec-19735">select</a></li>
+						<li type="i"><a href="#Anchor-mousedow-23150">mousedown</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-33846">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-poin-38412">point</a></li>
+						<li type="i"><a href="#Anchor-owne-41887">owner</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-47483">Example</a></li>
+				<li type="I"><a href="#Anchor-Downloa-50109">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-63720"></a>Introduction</h2>
+			<p>Handle is a JavaScript object used to represent points and key controls on descendants of the <a href="../shape/index.htm">Shape object</a>. Manipulating a Handle manipulates the object to which the handle belongs.</p>
+			<p>Handle is a sub-class of the <a href="../shape/index.htm">Shape object</a>.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-1739"></a>Reference</h2>
+			<h3><a name="Anchor-Method-4153"></a>Methods</h3>
+			<p><a name="Anchor-constructo-6336"></a>constructor - new Handle(<i>x, y, owner</i>);</p>
+			<ul>
+				<p>This method creates a new Handle object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-8900"></a>init();</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>x</b> is a number that defines the x position of the center of the handle</p>
+				<p><b>y</b> is a number that defines the y position of the center of the handle</p>
+				<p><b>owner</b> is a descendent of Shape to which this handle belongs. When this handle is moved, the owner's update() method will be called.</p>
+			</ul>
+			<p><a name="Anchor-realiz-11974"></a>realize();</p>
+			<ul>
+				<p>realize() constructs the SVG DOM nodes needed to visualize this widget. Any event listeners that are used by this object will be registered by this method.</p>
+			</ul>
+			<p><a name="Anchor-translat-9672"></a>translate(<i>delta</i>);</p>
+			<ul>
+				<p>translate() translates the SVG element and the associated handles by the specified amount.</p>
+				<p><b>delta</b> is a Point2D.</p>
+			</ul>
+			<p><a name="Anchor-refres-36571"></a>refresh();</p>
+			<ul>
+				<p>refresh() is used to update the position of the handle. This method will not call any callbacks associated with this object or with this object's owner object.</p>
+			</ul>
+			<p><a name="Anchor-selec-19735"></a>select(<i>state</i>);</p>
+			<ul>
+				<p>select() sets the current select state of the handle. The handle's appearance is updated to reflect the current state.</p>
+			</ul>
+			<p><a name="Anchor-mousedow-23150"></a>mousedown(<i>e</i>);</p>
+			<ul>
+				<p>mousedown() handles any mousedown events that are sent to the handle. If the handle is not locked, dragging is initiated.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-33846"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-poin-38412"></a><b>point</b> is a Point2D that represents the center of the handle.</p>
+				<p><a name="Anchor-owne-41887"></a><b>owner</b> is a descendant of Shape to which this handle belongs.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-47483"></a>Example</h2>
+			<p>This example allows you to adjust the position of multiple Handles. Here is a brief summary of the editing procedures:</p>
+			<ul>
+				<li>Click an unselected handle to select it</li>
+				<li>Shift-click an unselected handle to add it to the current selection</li>
+				<li>Shift-click a selected handle to remove it from the current selection</li>
+				<li>Drag a handle to move it</li>
+			</ul>
+			<p />
+			<div align="center">
+				<p><embed src="handle.svg" width="570" height="400" type="image/svg+xml" /></p>
+			</div>
+			<hr />
+			<h2><a name="Anchor-Downloa-50109"></a>Download</h2>
+			<p><a href="Handle.js">Handle.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

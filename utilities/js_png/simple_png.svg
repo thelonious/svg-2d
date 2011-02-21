@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="js_png.js.gz"/>
+    <script type="text/ecmascript"><![CDATA[
+        var xlinkns;
+        
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            svgns = "http://www.w3.org/2000/svg";
+            xlinkns = "http://www.w3.org/1999/xlink";
+
+            makePNG();
+        }
+
+        function makePNG() {
+            var width = 32;
+            var height = 32;
+
+            // create png
+            var png = new PngIndex(width, height);
+
+            // build color palette
+            // NOTE: palette indices range from 0 to 255, inclusive
+            // NOTE: alpha of 127 = opaque, 0 = transparent
+            // NOTE: index 0 is the background color
+            // setColor: palette index, red, green, blue, alpha
+            png.setColor(0, 128, 128,   0, 127);
+            png.setColor(1,   0, 128, 128, 127);
+            png.setColor(2, 128,   0, 128, 127);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    // setPixel: x, y, palette index
+                    png.setPixel(x, y, (x+y) % 2 + 1);
+                }
+            }
+
+            var image = svgDocument.createElementNS(svgns, "image");
+            image.setAttributeNS(null, "x", "10");
+            image.setAttributeNS(null, "y", "10");
+            image.setAttributeNS(null, "width", width);
+            image.setAttributeNS(null, "height", height);
+            image.setAttributeNS(
+                xlinkns,
+                "xlink:href",
+                "data:image/png;base64,\n" + png.getBase64()
+            );
+
+            svgDocument.rootElement.appendChild(image);
+        }
+    ]]></script>
+</svg>

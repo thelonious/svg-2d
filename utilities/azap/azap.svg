@@ -1,0 +1,32 @@
+<?xml version="1.0" standalone="no"?>
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script xlink:href="AntiZoomAndPan.js"/>
+    <script xlink:href="../viewbox/ViewBox.js"/>
+    <script><![CDATA[
+        var azap;
+        
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            azap = new AntiZoomAndPan();
+
+            var info = svgDocument.getElementById("info");
+
+            azap.appendNode(info);
+        }
+    ]]></script>
+    <g id="info">
+        <rect x="3" y="3" width="125" height="55"
+              stroke="gray" stroke-width="2" fill="cornflowerblue"/>
+        <text y="5">
+            <tspan x="7" dy="1em">This box is immune to</tspan>
+            <tspan x="7" dy="1em">zooming and panning.</tspan>
+            <tspan x="7" dy="1em">Whereas, the circle is</tspan>
+            <tspan x="7" dy="1em">not.</tspan>
+        </text>
+    </g>
+    <circle cx="100" cy="90" r="20" fill="red"/>
+</svg>

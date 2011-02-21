@@ -1,0 +1,33 @@
+<?xml version="1.0" standalone="no"?>
+<svg width="250" height="150" onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="../../../common/Node_Builder.js"/>
+    <script type="text/ecmascript" xlink:href="Textbox.js"/>
+    <script type="text/ecmascript"><![CDATA[
+        var textbox1;
+        var textbox2;
+        
+        /*****
+        *
+        *    init
+        *
+        *****/
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            var g_text = svgDocument.getElementById("g_text");
+            
+            textbox1 = new Textbox(10, 25, 100, 100, g_text);
+            textbox2 = new Textbox(135, 25, 100, 100, g_text);
+
+            textbox1.add_char("Text box 1");
+            textbox2.add_char("Text box 2");
+        }
+    ]]></script>
+
+    <g id="g_text">
+        <rect width="100%" height="100%" fill="rgb(200,200,200)"/>
+    </g>
+</svg>

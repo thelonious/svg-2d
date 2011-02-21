@@ -1,0 +1,56 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg width="115" height="200" onload="animate(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="../../../common/Bezier_Curve.js" />
+    <script type="text/ecmascript" xlink:href="../../../common/Node_Builder.js" />
+    <script type="text/ecmascript" xlink:href="../../../common/Scheduler.js" />
+    <script type="text/ecmascript" xlink:href="BezierMorph.js" />
+    <script type="text/ecmascript"><![CDATA[
+        var SVGDoc;
+        var SVGRoot;
+        var m;
+
+        function animate(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+            
+            m = new BezierMorph(
+                "M# C# 10,100 #",
+                [
+                    new Bezier_Curve(10,100, 30,125, 30,150, 30,150),
+                    new Bezier_Curve(10,100, 50,100, 50,50, 50,20),
+                    new Bezier_Curve(50,100, 65,100, 85,50, 100,100)
+                ]
+            );
+            m.create(svgDocument.documentElement);
+            
+            scheduler.add_task(morph, 3)
+            scheduler.start();
+        }
+
+        function morph() {
+            m.advance()
+        }
+    ]]></script>
+    <defs>
+        <path
+            id="button"
+            d="M-15 0 H15 A5 5 180 0 1 15 15 H-15 A5 5 180 0 1 -15 0"
+            style="stroke: gray; fill: #ddd" />
+    </defs>
+    
+    <rect width="100%" height="100%" style="fill: white" />
+    
+    <g transform="translate(30,180)" onclick="m.show_paths()">
+        <use xlink:href="#button" />
+        <text y="12" style="text-anchor: middle; pointer-events: none">Show</text>
+    </g>
+    <g transform="translate(80,180)" onclick="m.hide_paths()">
+        <use xlink:href="#button" />
+        <text y="12" style="text-anchor: middle; pointer-events: none">Hide</text>
+    </g>
+</svg>
+

@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+     xmlns:a3="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/"
+     a3:scriptImplementation="Adobe">
+    <script xlink:href="../../2D.js.gz"/>
+    <script><![CDATA[
+        var azap   = new AntiZoomAndPan();
+        var mouser = new Mouser();
+        
+        function init(e) {
+            new Lever(10,10, 10,80, null).realize();
+            new Lever(80,10, 80,80, null).realize();
+
+            azap.appendNode( mouser.svgNode );
+        }
+    ]]></script>
+</svg>

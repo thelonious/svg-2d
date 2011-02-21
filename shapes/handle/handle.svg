@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="no"?>
+<svg onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script xlink:href="../../2D.js"/>
+    <script><![CDATA[
+        var azap, mouser;
+
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            azap   = new AntiZoomAndPan();
+            mouser = new Mouser();
+
+            new Handle(10,10, null).realize();
+            new Handle(80,10, null).realize();
+            new Handle(10,80, null).realize();
+
+            azap.appendNode( mouser.svgNode );
+        }
+    ]]></script>
+</svg>

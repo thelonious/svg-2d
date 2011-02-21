@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Math Objects</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">Tutorials</a> :: Geometry</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-4219">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-6302">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Clas-31921">Class Methods</a></li>
+					<ol>
+						<li type="i"><a href="index.htm#Anchor-intersectShape-8671">intersectShapes</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectPathShap-12577">intersectPathShape</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-13226">intersectBezier2Bezier2 </a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-18334">intersectBezier2Bezier3 </a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-51391">intersectBezier2Circle</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-57680">intersectBezier2Ellipse</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-55243">intersectBezier2Line</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-59559">intersectBezier2Polygon</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-63244">intersectBezier2Rectangle</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-45477">intersectBezier3Bezier3 </a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-37858">intersectBezier3Circle</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectBezie-27851">intersectBezier3Ellipse</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-56963">intersectBezier3Line</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-60869">intersectBezier3Polygon</a></li>
+						<li type="i"><a href="#Anchor-intersectBezie-64754">intersectBezier3Rectangle</a></li>
+						<li type="i"><a href="#Anchor-intersectCircleCircl-34505">intersectCircleCircle</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectCircleEllips-14169">intersectCircleEllipse</a></li>
+						<li type="i"><a href="#Anchor-intersectCircleLin-40934">intersectCircleLine</a></li>
+						<li type="i"><a href="#Anchor-intersectCirclePolygo-43998">intersectCirclePolygon</a></li>
+						<li type="i"><a href="#Anchor-intersectCircleRectangl-46622">intersectCircleRectangle</a></li>
+						<li type="i"><a href="index.htm#Anchor-intersectEllipseEllips-65440">intersectEllipseEllipse</a></li>
+						<li type="i"><a href="#Anchor-intersectEllipseLin-24767">intersectEllipseLine</a></li>
+						<li type="i"><a href="#Anchor-intersectEllipsePolygo-29474">intersectEllipsePolygon</a></li>
+						<li type="i"><a href="#Anchor-intersectEllipseRectangl-33740">intersectEllipseRectangle</a></li>
+						<li type="i"><a href="#Anchor-intersectLineLin-49677">intersectLineLine</a></li>
+						<li type="i"><a href="#Anchor-intersectLinePolygo-53021">intersectLinePolygon</a></li>
+						<li type="i"><a href="#Anchor-intersectLineRectangl-56637">intersectLineRectangle</a></li>
+						<li type="i"><a href="#Anchor-intersectPolygonPolygo-19233">intersectPolygonPolygon</a></li>
+						<li type="i"><a href="#Anchor-intersectPolygonRectangl-23720">intersectPolygonRectangle</a></li>
+						<li type="i"><a href="#Anchor-intersectRectangleRectangl-28326">intersectRectangleRectangle</a></li>
+						<li type="i"><a href="index.htm#Anchor-bezou-52267">bezout</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Method-8736">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-10859">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-13422">init</a></li>
+						<li type="i"><a href="#Anchor-appendPoin-16687">appendPoint</a></li>
+						<li type="i"><a href="#Anchor-appendPoint-65486">appendPoints</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-20002">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-statu-22736">status</a></li>
+						<li type="i"><a href="#Anchor-point-26081">points</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-29225">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-4219"></a>Introduction</h2>
+			<p>Intersection is a JavaScript object used to capture the results of the intersection of two <a href="../../shapes/shape/index.htm">Shape objects</a>. Class methods perform the actual intersections and use only Point2D objects as parameters. This makes this class useful stand-alone uses where you don't want to use the 2D Geometry library.</p>
+			<p>The Ellipse-Ellipse intersection code is based on code written by David Eberly. That code and many more excellent examples are available at <a href="http://www.magic-software.com">his site</a>. If you are at all interested in 3D gaming algorithms, then I highly recommend his &quot;3D Game Engine Design&quot; book (ISBN 1-55860-593-2).</p>
+			<p>This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-6302"></a>Reference</h2>
+			<h3><a name="Anchor-Clas-31921"></a>Class Methods</h3>
+			<p><a name="Anchor-intersectShape-8671"></a>intersectShapes(<i>shape1, shape2</i>) : Intersection;</p>
+			<ul>
+				<p>This method determines which of the following intersection methods to call based on the types of the two shape parameters. One special case is tested for paths since these shapes need to be handled differently than all other shapes.</p>
+				<p>The Intersection object is returned from the resulting intersection method that is called by this method.</p>
+			</ul>
+			<p><a name="Anchor-intersectPathShap-12577"></a>intersectPathShape(<i>path, shape</i>) : Intersection;</p>
+			<ul>
+				<p>This method calls the specified path's intersectShape method to find all intersections between the specified path and shape.</p>
+			</ul>
+			<p><a name="Anchor-intersectBezie-13226"></a>intersectBezier2Bezier2(<i>a1, a2, a3, b1, b2, b3</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two quadratic Beziers. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Beziers do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-18334"></a>intersectBezier2Bezier3(<i>a1, a2, a3, b1, b2, b3, b4</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and a cubic Bezier. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the cubic Bezier do not intersect</li>
+				<li>Intersection, 1-6 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-51391"></a>intersectBezier2Circle(<i>p1, p2, p3, c, r</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and a circle. Note that this routine uses the intersectBezier2Ellipse() method to find all intersections. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the circle do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-57680"></a>intersectBezier2Ellipse(<i>p1, p2, p3, ec, rx, ry</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and an ellipse. Note that this routine is also used to find the intersection of a quadratic Bezier and an circle (although a separate intersectBezier2Circle may be created in the future). An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the ellipse do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-55243"></a>intersectBezier2Line(<i>p1, p2, p3, a1, a2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and a line. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the line do not intersect</li>
+				<li>Intersection, 1-2 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-59559"></a>intersectBezier2Polygon(<i>p1, p2, p3, points</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and a polygon. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the polygon do not intersect</li>
+				<li>Intersection, n intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-63244"></a>intersectBezier2Rectangle(<i>p1, p2, p3, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a quadratic Bezier and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the quadratic Bezier and the rectangle do not intersect</li>
+				<li>Intersection, n intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-45477"></a>intersectBezier3Bezier3(<i>a1, a2, a3, a4, b1, b2, b3, b4</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two cubic Beziers. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Beziers do not intersect</li>
+				<li>Intersection, 1-9 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-37858"></a>intersectBezier3Circle(<i>p1, p2, p3, p4, c, r</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a cubic Bezier and a circle. Note that this routine uses the intersectBezier3Ellipse() method to find all intersections. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Bezier and the circle do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-27851"></a>intersectBezier3Ellipse(<i>p1, p2, p3, p4, ec, rx, ry</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a cubic Bezier and an ellipse. Note that this routine is also used to find the intersection of a cubic Bezier and an circle (although a separate intersectBezier3Circle may be created in the future). An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Bezier and the ellipse do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-56963"></a>intersectBezier3Line(<i>p1, p2, p3, p4, a1, a2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a cubic Bezier and a line. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Bezier and the line do not intersect</li>
+				<li>Intersection, 1-3 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-60869"></a>intersectBezier3Polygon(<i>p1, p2, p3, p4, points</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a cubic Bezier and a polygon. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Bezier and the polygon do not intersect</li>
+				<li>Intersection, n intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectBezie-64754"></a>intersectBezier3Rectangle(<i>p1, p2, p3, p4, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a cubic Bezier and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the cubic Bezier and the rectangle do not intersect</li>
+				<li>Intersection, n intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectCircleCircl-34505"></a>intersectCircleCircle(<i>c1, r1, c2, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two circles. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the two circles a completely separate from one another</li>
+				<li>Inside, no points: one circle is completely inside of the other circle</li>
+				<li>Intersection, 1-2 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectCircleEllips-14169"></a>intersectCircleEllipse(<i>cc, r, ec, rx, ry</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a circle and an ellipse. Note that this routine uses the intersectEllipseEllipse() method to find all intersections. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the circle and the ellipse do not intersect</li>
+				<li>Intersection, 1-4 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectCircleLin-40934"></a>intersectCircleLine(<i>c, r, a1, a2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a circle and a line. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the line is completely outside of the circle</li>
+				<li>Inside, no points: the line is completely contained by the circle</li>
+				<li>Tangent, no points (NOTE: should return 1): the line touches the circle at a single point</li>
+				<li>Intersection, 1-2 intersection points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectCirclePolygo-43998"></a>intersectCirclePolygon(<i>c, r, points</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a circle and a polygon. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the polygon is completely outside of the circle</li>
+				<li>Inside, no points: the polygon is completely contained by the circle</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectCircleRectangl-46622"></a>intersectCircleRectangle(<i>c, r, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a circle and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the rectangle is completely outside of the circle</li>
+				<li>Inside, no points: the rectangle is completely inside of the circle</li>
+				<li>Intersection, 1-8 points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectEllipseEllips-65440"></a>intersectEllipseEllipse(<i>c1, rx1, ry1, c2, rx2, ry2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two ellipses. Note that this routine is also used to find the intersection of an ellipse and a circle. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the ellipses do not intersect</li>
+				<li>Intersection, 1-4 points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectEllipseLin-24767"></a>intersectEllipseLine(<i>c, rx, ry, a1, a2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of an ellipse and a line. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the line is completely outside of the ellipse</li>
+				<li>Inside, no points: the line is completely inside of the ellipse</li>
+				<li>Intersection, 1-2 points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectEllipsePolygo-29474"></a>intersectEllipsePolygon(<i>c, rx, ry, points</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of an ellipse and a polygon. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the ellipse and the polygon do not intersect</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectEllipseRectangl-33740"></a>intersectEllipseRectangle(<i>c, rx, ry, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of an ellipse and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the ellipse and the rectangle do not intersect</li>
+				<li>Intersection, 1-8 points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectLineLin-49677"></a>intersectLineLine(<i>a1, a2, b1, b2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two lines. An intersection object is returned with the following values:</p>
+				<li>No Intersection, no points: the lines do not intersect</li>
+				<li>Coincident, no points: the lines overlap</li>
+				<li>Parallel, no points: the lines are parallel, but do not overlap</li>
+				<li>Intersection, 1 intersection point: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectLinePolygo-53021"></a>intersectLinePolygon(<i>a1, a2, points</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a line and a polygon. An Intersection object is returned with the following values:</p>
+				<li>No Intersection: the polygon and the line do not intersect</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectLineRectangl-56637"></a>intersectLineRectangle(<i>a1, a2, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a line and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the rectangle and the line do not intersect</li>
+				<li>Intersection, 1-2 points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectPolygonPolygo-19233"></a>intersectPolygonPolygon(<i>points1, points2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two polygons. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the polygons do not intersect</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectPolygonRectangl-23720"></a>intersectPolygonRectangle(<i>points, r1, r2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of a polygon and a rectangle. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the polygon and the rectangle do not intersect</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-intersectRectangleRectangl-28326"></a>intersectRectangleRectangle(<i>a1, a2, b1, b2</i>) : Intersection;</p>
+			<ul>
+				<p>Find the intersection of two rectangles. An Intersection object is returned with the following values:</p>
+				<li>Outside, no points: the rectangles do not intersect</li>
+				<li>Intersection, n points: the shapes intersect</li>
+			</ul>
+			<p><a name="Anchor-bezou-52267"></a>bezout(<i>e1, e2</i>) : Polynomial;</p>
+			<ul>
+				<p>bezout() calculates the Bezout determinate for the two specified ellipses. The resulting quadratic polynomial is returned. This method is used by <a href="index.htm#Anchor-intersectEllipseEllips-65440">intersectEllipseEllipse</a>.</p>
+				<p><b>e1</b> is an array of the coefficients of an ellipse in general quadratic form: ax^2 + bxy + cy^2 + dx + ey + f = 0. The coefficients are in a,b,c,d,e,f order.</p>
+				<p><b>e2</b> is an array of the coefficients of an ellipse in general quadratic form: ax^2 + bxy + cy^2 + dx + ey + f = 0. The coefficients are in a,b,c,d,e,f order.</p>
+			</ul>
+			<h3><a name="Anchor-Method-8736"></a>Methods</h3>
+			<p><a name="Anchor-constructo-10859"></a>constructor - new Intersection(<i>status</i>);</p>
+			<ul>
+				<p>This method creates a new Intersection object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-13422"></a>init(<i>status</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>status</b> is a string which returns a brief description of the results of an intersection.</p>
+			</ul>
+			<p><a name="Anchor-appendPoin-16687"></a>appendPoint(<i>point</i>);</p>
+			<ul>
+				<p>appendPoint() adds a new point to the point array.</p>
+				<p><b>point</b> is the new Point2D object that is to be added to the points array.</p>
+			</ul>
+			<p><a name="Anchor-appendPoint-65486"></a>appendPoints(<i>points</i>);</p>
+			<ul>
+				<p>appendPoint() adds a new point to the point array.</p>
+				<p><b>points</b> is an array of Point2D objects to be added to the points array.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-20002"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-statu-22736"></a><b>status</b> is a string used to categorize the results of an intersection.</p>
+				<p><a name="Anchor-point-26081"></a><b>points</b> is an array of Point2D objects; one point for each intersection point.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Downloa-29225"></a>Download</h2>
+			<p><a href="Intersection.js">Intersection.js</a> - the Intersection object only</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

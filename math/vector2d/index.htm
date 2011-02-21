@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Math Objects</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Math Objects</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-3564">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-5566">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Clas-51422">Class Methods </a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-fromPoint-54186">fromPoints </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Method-7649">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-9933">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-12396">init</a></li>
+						<li type="i"><a href="#Anchor-lengt-15841">length</a></li>
+						<li type="i"><a href="#Anchor-do-18385">dot</a></li>
+						<li type="i"><a href="#Anchor-cros-21970">cross</a></li>
+						<li type="i"><a href="#Anchor-uni-24460">unit </a></li>
+						<li type="i"><a href="#Anchor-unitEqual-28336">unitEquals </a></li>
+						<li type="i"><a href="#Anchor-ad-31971">add </a></li>
+						<li type="i"><a href="#Anchor-addEqual-35616">addEquals </a></li>
+						<li type="i"><a href="#Anchor-subtrac-39161">subtract </a></li>
+						<li type="i"><a href="#Anchor-subtractEqual-43217">subtractEquals </a></li>
+						<li type="i"><a href="#Anchor-multipl-46902">multiply </a></li>
+						<li type="i"><a href="#Anchor-multiplyEqual-50528">multiplyEquals </a></li>
+						<li type="i"><a href="#Anchor-divid-54133">divide </a></li>
+						<li type="i"><a href="#Anchor-divideEqual-57638">divideEquals </a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-33006">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-39295">x</a></li>
+						<li type="i"><a href="#Anchor-45234">y</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Downloa-49990">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-3564"></a>Introduction</h2>
+			<p>Vector2D is a JavaScript object used to encapsulate a 2-dimensional vector. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-5566"></a>Reference</h2>
+			<h3><a name="Anchor-Clas-51422"></a>Class Methods</h3>
+			<p><a name="Anchor-fromPoint-54186"></a>fromPoints(<i>p1, p2</i>) : Vector2D;</p>
+			<ul>
+				<p>fromPoints() returns the vector that is created by the difference of two points. p1 is subtracted from p2 to create the vector</p>
+				<p><b>p1</b> is a Point2D that serves as the origin of the vector</p>
+				<p><b>p2</b> is a Point2D that serves as the end-point of the vector</p>
+			</ul>
+			<h3><a name="Anchor-Method-7649"></a>Methods</h3>
+			<p><a name="Anchor-constructo-9933"></a>constructor - new Vector2D(<i>x, y</i>);</p>
+			<ul>
+				<p>This method creates a new Vector2D object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-12396"></a>init(<i>x, y</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object.</p>
+				<p><b>x</b> is a number that represents the x-component of a vector.</p>
+				<p><b>y</b> is a number that represents the y-component of a vector.</p>
+			</ul>
+			<p><a name="Anchor-lengt-15841"></a>length() : float;</p>
+			<ul>
+				<p>length() returns the length, or magnitude, of the vector.</p>
+			</ul>
+			<p><a name="Anchor-do-18385"></a>dot(<i>that</i>) : float;</p>
+			<ul>
+				<p>dot() returns the dot product of this object and another Vector2D object.</p>
+			</ul>
+			<p><a name="Anchor-cros-21970"></a>cross(<i>that</i>) : float;</p>
+			<ul>
+				<p>cross() returns the cross product of this object and another Vector2D object.</p>
+			</ul>
+			<p><a name="Anchor-uni-24460"></a>unit() : Vector2D;</p>
+			<ul>
+				<p>unit() returns the unit vector as new Vector2D</p>
+			</ul>
+			<p><a name="Anchor-unitEqual-28336"></a>unitEquals() : Vector2D;</p>
+			<ul>
+				<p>unitEquals() converts the current vector to a unit vector. The object is returned to allow multiple vector operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-ad-31971"></a>add(<i>that</i>) : Vector2D;</p>
+			<ul>
+				<p>add() returns a new Vector2D that is the addition of this object and another Vector2D.</p>
+			</ul>
+			<p><a name="Anchor-addEqual-35616"></a>addEquals(<i>that</i>): Vector2D;</p>
+			<ul>
+				<p>addEquals() adds another Vector2D to this object. The object is returned to allow multiple vector operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-subtrac-39161"></a>subtract(<i>that</i>) : Vector2D;</p>
+			<ul>
+				<p>subtract() returns a new Vector2D that is the subtraction of another Vector2D from this object.</p>
+			</ul>
+			<p><a name="Anchor-subtractEqual-43217"></a>subtractEquals(<i>that</i>): Vector2D;</p>
+			<ul>
+				<p>subtractEquals() subtracts another Vector2D from this object. The object is returned to allow multiple vector operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-multipl-46902"></a>multiply(<i>scalar</i>) : Vector2D;</p>
+			<ul>
+				<p>multiply() returns a new Vector2D equal to this object multiplied by the specified scalar amount.</p>
+			</ul>
+			<p><a name="Anchor-multiplyEqual-50528"></a>multiplyEquals(<i>scalar</i>): Vector2D;</p>
+			<ul>
+				<p>multiplyEquals() multiplies this vector's components by the specified amount. The object is returned to allow multiple vector operations to be chained together.</p>
+			</ul>
+			<p><a name="Anchor-divid-54133"></a>divide(<i>scalar</i>) : Vector2D;</p>
+			<ul>
+				<p>divide() returns a new Vector2D equal to this object divided by the specified scalar amount.</p>
+			</ul>
+			<p><a name="Anchor-divideEqual-57638"></a>divideEquals(<i>scalar</i>): Vector2D;</p>
+			<ul>
+				<p>divideEquals() divides this vector's components by the specified amount. The object is returned to allow multiple vector operations to be chained together.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-33006"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-39295"></a><b>x</b> is a number that represents the x-component of a vector.</p>
+				<p><a name="Anchor-45234"></a><b>y</b> is a number that represents the y-component of a vector.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Downloa-49990"></a>Download</h2>
+			<p><a href="Vector2D.js">Vector2D.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

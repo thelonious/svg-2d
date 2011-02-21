@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Shapes</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Shapes</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-29376">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-32020">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-34474">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-42926">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-45539">init</a></li>
+						<li type="i"><a href="#Anchor-realiz-48994">realize</a></li>
+						<li type="i"><a href="#Anchor-refres-2904">refresh</a></li>
+						<li type="i"><a href="#Anchor-registerHandle-6429">registerHandles</a></li>
+						<li type="i"><a href="#Anchor-unregisterHandle-9914">unregisterHandles</a></li>
+						<li type="i"><a href="#Anchor-selectHandle-13629">selectHandles</a></li>
+						<li type="i"><a href="#Anchor-showHandle-17375">showHandles</a></li>
+						<li type="i"><a href="index.htm#Anchor-getIntersectionParam-5314">getIntersectionParams</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-64997">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-13010">p1</a></li>
+						<li type="i"><a href="#Anchor-18467">p2</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-4827">Example</a></li>
+				<li type="I"><a href="#Anchor-Downloa-28463">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-29376"></a>Introduction</h2>
+			<p>Rectangle is a JavaScript object that allows you to interactively manipulate a rectangle via <a href="../handle/index.htm">handle objects</a>: two corner handles and a center handle. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<p>Rectangle is a sub-class of the <a href="../shape/index.htm">Shape class</a>.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-32020"></a>Reference</h2>
+			<h3><a name="Anchor-Method-34474"></a>Methods</h3>
+			<p><a name="Anchor-61757" /><a name="Anchor-constructo-42926"></a>constructor - new Rectangle(<i>svgNode</i>);</p>
+			<blockquote>
+				<p>This method creates a new Rectangle object. All initialization is handled by the init() method. All parameters for this method are described below.</p>
+			</blockquote>
+			<p><a name="Anchor-ini-45539"></a>init(<i>svgNode</i>);</p>
+			<ul>
+				<p>init() initialized all properties for this object. Handles are created for the upper-lefthand corner, lower-righthand corner and the center of the SVG rect element.</p>
+				<p><b>svgNode</b> is an SVG rect element that is to be managed by this object.</p>
+			</ul>
+			<p><a name="Anchor-realiz-48994"></a>realize();</p>
+			<ul>
+				<p>realize() constructs the SVG DOM nodes needed to visualize the handles of this widget. Event listeners are registered as needed to implement this object's functionality.</p>
+			</ul>
+			<p><a name="Anchor-refres-2904"></a>refresh();</p>
+			<ul>
+				<p>refresh() applies the handle positions to the SVG element associated with this object.</p>
+			</ul>
+			<p><a name="Anchor-registerHandle-6429"></a>registerHandles();</p>
+			<ul>
+				<p>registerHandles() adds all handles used by this object to the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-unregisterHandle-9914"></a>unregisterHandles();</p>
+			<ul>
+				<p>unregisterHandles() removes all handles used by this object from the mouser's handle list.</p>
+			</ul>
+			<p><a name="Anchor-selectHandle-13629"></a>selectHandles();</p>
+			<ul>
+				<p>selectHandles() set the current select value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-showHandle-17375"></a>showHandles();</p>
+			<ul>
+				<p>showHandles() sets the current visibility value for all handles used by this object.</p>
+			</ul>
+			<p><a name="Anchor-getIntersectionParam-5314"></a>getIntersectionParams() : IntersectionParams;</p>
+			<ul>
+				<p>This method returns an IntersectionParams object to specify this shape's name and the necessary parameters to find the intersection of this shape with another. The name is used by the Intersection object to determine which intersection routine to call.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-64997"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-13010"></a><b>p1</b> is a handle on the rectangle managed by this object. Adjusting this handle adjusts the rectangle's size.</p>
+				<p><a name="Anchor-18467"></a><b>p2</b> is a handle on the rectangle managed by this object. Adjusting this handle adjusts the rectangle's size.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-4827"></a>Example</h2>
+			<p>This example allows you to adjust the rectangles within the SVG document. Here is a brief summary of the editing procedures:</p>
+			<ul>
+				<li>Click an unselected rectangle once to select it.</li>
+				<li>Click a selected rectangle to select all of its handles.</li>
+				<li>Shift-click an unselected rectangle to add all of its handles it to the current selection.</li>
+				<li>Shift-click a selected rectangle to remove it from the current selection.</li>
+				<li>Click an unselected handle to select it</li>
+				<li>Shift-click an unselected handle to add it to the current selection</li>
+				<li>Shift-click a selected handle to remove it from the current selection</li>
+				<li>Drag a handle to manipulate the SVG element</li>
+				<li>Click the background to deselect all objects</li>
+			</ul>
+			<p />
+			<div align="center">
+				<embed src="rectangle.svg" width="570" height="400" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Downloa-28463"></a>Download</h2>
+			<p><a href="Rectangle.js">Rectangle.js</a> - the rectangle object only...cannot be used in isolation</p>
+			<p><a href="../../2D.js.gz">2D.js.gz</a> - all objects needed to use this object and other 2D geometry objects</p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

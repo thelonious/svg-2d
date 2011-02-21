@@ -1,0 +1,152 @@
+<html>
+    <head>
+        <title>PNG Generator Test</title>
+        <script src="js_png.js"></script>
+        <script>
+        var fso;
+        var width, height;
+        
+        function init(e) {
+            fso = new ActiveXObject("Scripting.FileSystemObject");
+            width = 32;
+            height = 32;
+
+            makeIndexedTransparent();
+            makeIndexedOpaque();
+            makeGreyscaleTransparent1();
+            makeGreyscaleTransparent2();
+            makeGreyscaleOpaque();
+            makeTrueColorTransparent();
+            makeTrueColorOpaque();
+        }
+
+        function makeIndexedTransparent() {
+            var png = makeIndexed(true);
+
+            writePng(png, "IndexedTransparent");
+        }
+
+        function makeIndexedOpaque() {
+            var png = makeIndexed();
+
+            writePng(png, "IndexedOpaque");
+        }
+
+        function makeGreyscaleTransparent1() {
+            // turn off ASV bug fix
+            Png.ASV_FIX = false;
+
+            var png = makeGreyscale();
+
+            png.setTransparencyValue(128);
+            writePng(png, "GreyscaleTransparent1");
+
+            // turn on ASV bug fix
+            Png.ASV_FIX = true;
+        }
+
+        function makeGreyscaleTransparent2() {
+            var png = makeGreyscale();
+
+            png.setTransparencyValue(128);
+            writePng(png, "GreyscaleTransparent2");
+        }
+
+        function makeGreyscaleOpaque() {
+            var png = makeGreyscale();
+
+            writePng(png, "GreyscaleOpaque");
+        }
+
+        function makeTrueColorTransparent() {
+            var png = makeTrueColor();
+
+            png.setTransparencyColor(128, 128, 0);
+            writePng(png, "TrueColorTransparent");
+        }
+
+        function makeTrueColorOpaque() {
+            var png = makeTrueColor();
+
+            writePng(png, "TrueColorOpaque");
+        }
+
+        function makeIndexed(transparent) {
+            // create png
+            var png = new PngIndex(width, height, transparent);
+
+            // build color palette
+            // NOTE: palette indices range from 0 to 255, inclusive
+            // NOTE: alpha of 255 = opaque, 0 = transparent
+            // NOTE: index 0 is the background color
+            // setColor: palette index, red, green, blue, alpha
+            png.setColor(0, 128, 128,   0,   0);
+            png.setColor(1, 128,   0, 128, 127);
+            png.setColor(2, 128,   0, 128, 255);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    // setPixel: x, y, palette index
+                    png.setPixel(x, y, (x+y) % 3);
+                }
+            }
+
+            return png;
+        }
+
+        function makeGreyscale() {
+            // create png
+            var png = new PngGreyscale(width, height);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    // setPixel: x, y, greyscale value
+                    png.setPixel(
+                        x, y,
+                        112 + Math.round(Math.random() * 32)
+                    );
+                }
+            }
+
+            return png;
+        }
+
+        function makeTrueColor() {
+            // create png
+            var png = new PngTrueColor(width, height);
+
+            // plot points
+            for ( var y = 0; y < height; y++ ) {
+                for ( var x = 0; x < width; x++ ) {
+                    if ( x == y ) {
+                        png.setPixel(x, y, 128, 128, 0);
+                    } else {
+                        png.setPixel(
+                            x, y,
+                            96 + Math.round(Math.random() * 64),
+                            96 + Math.round(Math.random() * 64),
+                            96 + Math.round(Math.random() * 64)
+                        );
+                    }
+                }
+            }
+
+            return png;
+        }
+
+        function writePng(png, name) {
+            var data = png.getData();
+            var file = fso.CreateTextFile(name, true);
+            for (var i = 0; i < data.length; i++ ) {
+                file.WriteLine(data[i]);
+            }
+            file.Close();
+        }
+        </script>
+    </head>
+    <body onload="init()">
+        <p>Files should have been created</p>
+    </body>
+</html>

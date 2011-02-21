@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+	<head>
+		<title>KevLinDev - GUI - Utilities</title>
+		<link href="../../../common/kevlindev.css" type="text/css" rel="stylesheet" />
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	</head>
+
+	<body>
+		<div id="logo"></div>
+		<p id="path"><a href="../../../index.htm">Home</a> :: <a href="../../index.htm">GUI</a> :: Utilities</p>
+		<div id="toc">
+			<ol>
+				<li type="I"><a href="#Anchor-Introductio-10027">Introduction</a></li>
+				<li type="I"><a href="#Anchor-Referenc-12270">Reference</a></li>
+				<ol>
+					<li type="A"><a href="#Anchor-Method-14804">Methods</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-constructo-17818">constructor</a></li>
+						<li type="i"><a href="#Anchor-ini-20562">init</a></li>
+						<li type="i"><a href="#Anchor-appendNod-24698">appendNode</a></li>
+						<li type="i"><a href="#Anchor-removeNod-28423">removeNode</a></li>
+						<li type="i"><a href="#Anchor-handleEven-32109">handleEvent</a></li>
+						<li type="i"><a href="#Anchor-SVGZoo-35844">SVGZoom</a></li>
+						<li type="i"><a href="#Anchor-SVGScrol-39059">SVGScroll</a></li>
+						<li type="i"><a href="#Anchor-updat-42754">update</a></li>
+					</ol>
+					<li type="A"><a href="#Anchor-Propertie-46149">Properties</a></li>
+					<ol>
+						<li type="i"><a href="#Anchor-svgNode-50665">svgNodes</a></li>
+						<li type="i"><a href="#Anchor-58397">x_trans</a></li>
+						<li type="i"><a href="#Anchor-63914">y_trans</a></li>
+						<li type="i"><a href="#Anchor-scal-2154">scale</a></li>
+					</ol>
+				</ol>
+				<li type="I"><a href="#Anchor-Exampl-18843">Example </a></li>
+				<li type="I"><a href="index.htm#Anchor-Revisio-54061">Revision History </a></li>
+				<li type="I"><a href="#Anchor-Downloa-6300">Download</a></li>
+			</ol>
+		</div>
+		<div id="simple-content">
+			<h2><a name="Anchor-Introductio-10027"></a>Introduction</h2>
+			<p>AntiZoomAndPan, aka. azap, is a JavaScript object used to make specific SVG nodes immune to zooming and panning. This code is used in the <a href="../../../geometry/index.htm">2D Geometry</a> section of this site.</p>
+			<hr />
+			<h2><a name="Anchor-Referenc-12270"></a>Reference</h2>
+			<h3><a name="Anchor-Method-14804"></a>Methods</h3>
+			<p><a name="Anchor-constructo-17818"></a>constructor - new AntiZoomAndPan();</p>
+			<ul>
+				<p>This method creates a new Mouser object. All initialization is handled by the init() method. All parameters for this method are described below</p>
+			</ul>
+			<p><a name="Anchor-ini-20562"></a>init();</p>
+			<ul>
+				<p>init() initialized all properties for this object. Event listeners are added to the top-most svg element so that zoom and pan events will be sent to this object.</p>
+			</ul>
+			<p><a name="Anchor-appendNod-24698"></a>appendNode(<i>svgNode</i>);</p>
+			<ul>
+				<p>appendNode() adds the specified SVG node to its list of managed nodes.</p>
+			</ul>
+			<p><a name="Anchor-removeNod-28423"></a>removeNode(<i>svgNode</i>);</p>
+			<ul>
+				<p>removeNode() removes the specified SVG node from its lists of managed ndoes.</p>
+			</ul>
+			<p><a name="Anchor-handleEven-32109"></a>handleEvent(<i>e</i>);</p>
+			<ul>
+				<p>handleEvent() dispatches the SVGZoom and SVGScroll events to the equivalently named methods.</p>
+			</ul>
+			<p><a name="Anchor-SVGZoo-35844"></a>SVGZoom(<i>e</i>);</p>
+			<ul>
+				<p>SVGZoom() calls the update() method whenever the SVG document is zoomed.</p>
+			</ul>
+			<p><a name="Anchor-SVGScrol-39059"></a>SVGScroll(<i>e</i>);</p>
+			<ul>
+				<p>SVGScroll() calls the update() method whenever the SVG document is scrolled.</p>
+			</ul>
+			<p><a name="Anchor-updat-42754"></a>update();</p>
+			<ul>
+				<p>update() calculates the transform that is need to prevent an object from being scaled or transformed. This transformation is applied to all nodes managed by this object.</p>
+			</ul>
+			<h3><a name="Anchor-Propertie-46149"></a>Properties</h3>
+			<ul>
+				<p><a name="Anchor-svgNode-50665"></a><b>svgNodes</b> is an array of SVG nodes. This is the collection of all nodes that are being manages by this object.</p>
+				<p><a name="Anchor-58397"></a><b>x_trans</b> is a number that is equivalent to the current x translation that azap is applying to the managed SVG nodes.</p>
+				<p><a name="Anchor-63914"></a><b>y_trans</b> is a number that is equivalent to the current y translation that azap is applying to the managed SVG nodes.</p>
+				<p><a name="Anchor-scal-2154"></a><b>scale</b> is a number that is equivalent to the current scale that azap is applying to the managed SVG nodes.</p>
+			</ul>
+			<hr />
+			<h2><a name="Anchor-Exampl-18843"></a>Example</h2>
+			<p>The following example registers a &lt;g&gt; element with an AntiZoomAndPan object. Try panning and zooming the image. Notice that only the circle is effected by these actions.</p>
+			<div align="center">
+				<embed src="azap.svg" width="300" height="300" type="image/svg+xml" /></div>
+			<p>This example recreates the last example but defines a viewBox on the root svg element. You may find it interesting to open this example in its own window and then resize the window. You will notice that the circle is resized according to the rules of the viewBox; however, the text remains visually uneffected.</p>
+			<div align="center">
+				<embed src="azap_viewbox.svg" width="300" height="300" type="image/svg+xml" /></div>
+			<hr />
+			<h2><a name="Anchor-Revisio-54061"></a>Revision History</h2>
+			<h3>Version 1.2</h3>
+			<ol>
+				<li>Removed dependency on viewBox object. The viewBox will not be taken into effect if the ViewBox object has not been loaded in the SVG document. I still haven't addressed the transformation problem mentioned in version 1.1 below.</li>
+			</ol>
+			<h3>Version 1.1</h3>
+			<ol>
+				<li>Add initial support for viewBox; however, there is a problem in my transformation logic which requires you to use screen coordinates on elements that are managed by azap even when a viewBox viewport is in effect on the element.</li>
+			</ol>
+			<h3>Version 1.0</h3>
+			<ol>
+				<li>Initial release of the AntiZoomAndPan object. Currently does not support SVG documents using a viewBox.</li>
+			</ol>
+			<hr />
+			<h2><a name="Anchor-Downloa-6300"></a>Download</h2>
+			<p><a href="AntiZoomAndPan.js">AntiZoomAndPan.js</a></p>
+		</div>
+		<div id="footer">
+			<p class="copyright">Copyright 2000-2003, Kevin Lindsey</p>
+		</div>
+	</body>
+
+</html>

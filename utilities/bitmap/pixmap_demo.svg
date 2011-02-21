@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
+    "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<svg height="100%" width="100%" onload="init(evt)"
+     xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink">
+    <script type="text/ecmascript" xlink:href="Bitmap.js"/>
+    <script type="text/ecmascript" xlink:href="Pixmap.js"/>
+    <script type="text/ecmascript"><![CDATA[
+        function init(e) {
+            if ( window.svgDocument == null )
+                svgDocument = e.target.ownerDocument;
+
+            test = svgDocument.getElementById("test");
+            var colors = new Array();
+
+            for ( var x = 0; x < 2; x++ ) {
+                var c = Math.floor(256 * x / 2);
+                colors[x] = "rgb(" + c + "," + c + "," + c + ")";
+            }
+            
+            var pixmap = new Pixmap(
+                test,
+                50, 50,
+                colors,
+                4, 4, 1);
+
+            c = 0;
+            for ( y = 0; y < 50; y++) {
+                for ( x = 0; x < 50; x++ ) {
+                    pixmap.plot_pixel(x, y, c);
+                    c = (c + 1) % 2;
+                }
+            }
+
+            pixmap.update();
+        }
+    ]]></script>
+    <rect width="100%" height="100%" style="fill: darkgrey"/>
+    <g transform="translate(200,200)">
+        <g id="test" transform="rotate(0)">
+            <animateTransform attributeName="transform" type="rotate"
+                values="0;359" begin="1s" dur="15s" repeatCount="indefinite"/>
+        </g>
+    </g>
+</svg>
